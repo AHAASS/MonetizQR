@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Cómo será tu día?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            overflow: hidden;
+            cursor: pointer;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .top-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            min-height: 60vh;
+        }
+        
+        .bottom-section {
+            height: 40vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-top: 2px solid rgba(255, 215, 0, 0.5);
+        }
+        
+        .fortune-container {
+            text-align: center;
+            max-width: 90%;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease-out;
+            transition: all 0.3s ease;
+        }
+        
+        .fortune-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .redirect-container {
+            text-align: center;
+            max-width: 90%;
+            padding: 30px;
+            background: rgba(255, 215, 0, 0.2);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.6);
+            box-shadow: 0 8px 32px rgba(255, 215, 0, 0.2);
+            animation: urgent 1.5s infinite, slideUp 1s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes urgent {
+            0%, 100% { 
+                background: rgba(255, 215, 0, 0.2);
+                border-color: rgba(255, 215, 0, 0.6);
+            }
+            50% { 
+                background: rgba(255, 215, 0, 0.4);
+                border-color: rgba(255, 215, 0, 0.8);
+            }
+        }
+        
+        .fortune-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: rotate 4s infinite ease-in-out;
+        }
+        
+        @keyframes rotate {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(10deg) scale(1.1); }
+            75% { transform: rotate(-10deg) scale(1.1); }
+        }
+        
+        .fortune-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+            to { text-shadow: 2px 2px 20px rgba(255,215,0,0.6); }
+        }
+        
+        .fortune-message {
+            font-size: 1.6em;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            border-left: 5px solid #ffd700;
+            text-align: center;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
+            animation: slideIn 1s ease-out 2s both;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .fortune-message p {
+            margin: 0;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .fortune-number {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        
+        .message-type {
+            font-size: 0.8em;
+            opacity: 0.7;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .loading-spinner {
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .auto-redirect {
+            font-size: 1.2em;
+            text-align: center;
+        }
+        
+        .countdown {
+            font-size: 3em;
+            font-weight: bold;
+            color: #ffd700;
+            margin: 15px 0;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            animation: countdown-pulse 1s infinite;
+        }
+        
+        @keyframes countdown-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .redirect-text {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .redirect-subtext {
+            font-size: 0.95em;
+            opacity: 0.9;
+            margin-top: 15px;
+        }
+        
+        .progress-bar {
+            width: 80%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffd700, #ffed4e);
+            border-radius: 3px;
+            animation: progress 6s linear forwards;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+        }
+        
+        @keyframes progress {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+        
+        .click-anywhere {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 215, 0, 0.9);
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            animation: bounce 2s infinite;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+        
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        .interactive-hint {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 215, 0, 0.8);
+            color: #333;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            animation: fadeInOut 3s infinite;
+        }
+        
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        
+        /* Efectos especiales para móvil */
+        @media (max-width: 768px) {
+            .top-section { min-height: 65vh; }
+            .bottom-section { height: 35vh; }
+            .fortune-title { font-size: 2em; }
+            .fortune-message { font-size: 1.4em; }
+            .fortune-icon { font-size: 60px; }
+            .countdown { font-size: 2.5em; }
+            
+            body {
+                cursor: pointer;
+                -webkit-tap-highlight-color: transparent;
+            }
+        }
+        
+        /* Ocultar elementos que podrían causar interferencia */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="interactive-hint">👆 Toca para continuar</div>
+    
+    <!-- Sección Superior: Mensaje de la Fortuna -->
+    <div class="top-section" onclick="handleUserClick()">
+        <div class="fortune-container">
+            <div class="fortune-icon">🔮</div>
+            <h1 class="fortune-title">¿Cómo será tu día?</h1>
+            
+            <div class="fortune-number" id="fortuneNumber">Mensaje #<span id="messageNumber">...</span></div>
+            <div class="message-type" id="messageType">Preparando tu mensaje...</div>
+            
+            <div class="fortune-message" id="fortuneMessage">
+                <div class="loading-spinner"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Sección Inferior: Información de Redirección -->
+    <div class="bottom-section" onclick="handleUserClick()">
+        <div class="redirect-container">
+            <div class="auto-redirect">
+                <div class="redirect-text">🚀 Preparando contenido exclusivo</div>
+                <div class="countdown" id="countdown">6</div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="redirect-subtext">
+                    ⚡ Toca para acelerar ⚡
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="click-anywhere" onclick="handleUserClick()">👆 Contenido viral esperándote 👆</div>
+
+    <script>
+        // ===============================================
+        // MENSAJES COMPLETOS (300 MENSAJES)
+        // ===============================================
+        
+        // 150 Mensajes Positivos
+        const positiveMessages = [
+            "¡Hoy será tu día de suerte! Una oportunidad increíble se acerca.",
+            "El universo conspira a tu favor. Mantén los ojos abiertos.",
+            "Tu próxima decisión cambiará todo para mejor.",
+            "Alguien especial está pensando en ti en este momento.",
+            "Hoy recibirás una noticia que te llenará de alegría.",
+            "Tu intuición está especialmente aguda hoy. Confía en ella.",
+            "Una puerta que parecía cerrada está a punto de abrirse.",
+            "Hoy es el día perfecto para dar el primer paso hacia tu sueño.",
+            "La suerte favorece a los valientes. ¡Atrévete hoy!",
+            "Tu sonrisa será contagiosa y cambiará el día de alguien.",
+            "Hoy descubrirás un talento oculto que tienes.",
+            "Una coincidencia mágica está esperándote hoy.",
+            "Tu energía positiva atraerá cosas maravillosas.",
+            "Hoy conocerás a alguien que se convertirá en alguien importante.",
+            "El éxito está más cerca de lo que imaginas.",
+            "Hoy será un día lleno de pequeños milagros.",
+            "Tu creatividad brillará especialmente hoy.",
+            "Una oportunidad dorada aparecerá antes del atardecer.",
+            "Hoy tu generosidad te será devuelta multiplicada.",
+            "El amor está en el aire y te va a encontrar.",
+            "Hoy aprenderás algo que cambiará tu perspectiva para mejor.",
+            "Tu paciencia será recompensada muy pronto.",
+            "Hoy es tu día para brillar con luz propia.",
+            "Una buena noticia llegará por una llamada inesperada.",
+            "Tu próximo 'sí' te llevará a una aventura increíble.",
+            "Hoy encontrarás exactamente lo que has estado buscando.",
+            "Tu destino está alineándose perfectamente hoy.",
+            "Hoy alguien te dirá exactamente lo que necesitas escuchar.",
+            "La felicidad que buscas ya está en camino hacia ti.",
+            "Tu próximo encuentro casual no será casualidad.",
+            "Hoy descubrirás que eres más fuerte de lo que creías.",
+            "Una oportunidad de oro aparecerá disfrazada de desafío.",
+            "Hoy tu corazón te guiará hacia la decisión correcta.",
+            "El momento perfecto para actuar es ahora.",
+            "Hoy recibirás una señal clara sobre tu camino.",
+            "Tu próxima conversación será reveladora y positiva.",
+            "Hoy es el día para convertir tu 'algún día' en 'hoy'.",
+            "Una sorpresa agradable te está esperando al final del día.",
+            "Tu intuición sobre esa persona era correcta.",
+            "Hoy descubrirás que tienes más recursos de los que pensabas.",
+            "El cambio positivo que has estado esperando comienza hoy.",
+            "Tu próxima idea será brillante y revolucionaria.",
+            "Hoy alguien valorará tremendamente tu ayuda.",
+            "La respuesta que buscas llegará de forma inesperada.",
+            "Hoy tu corazón y tu mente estarán en perfecta armonía.",
+            "Una oportunidad única se presentará antes de las 6 PM.",
+            "Hoy redescubrirás una pasión que habías olvidado.",
+            "Tu próximo 'no' te librará de algo que no te convenía.",
+            "Hoy recibirás reconocimiento por algo que hiciste bien.",
+            "El universo te está preparando para algo extraordinario.",
+            "Hoy tu optimismo será contagioso y transformador.",
+            "Una coincidencia aparentemente menor tendrá gran impacto positivo.",
+            "Hoy descubrirás un atajo hacia tu objetivo principal.",
+            "Tu próxima decisión instintiva será la correcta.",
+            "Hoy alguien necesitará exactamente lo que tú puedes ofrecer.",
+            "La suerte está de tu lado en todos los juegos de hoy.",
+            "Hoy encontrarás inspiración en el lugar más inesperado.",
+            "Tu próximo mensaje importante llegará por redes sociales.",
+            "Hoy es perfecto para reconectar con alguien especial.",
+            "Una oportunidad laboral emocionante se acerca rápidamente.",
+            "Hoy tu creatividad encontrará la solución perfecta.",
+            "El momento de dar ese paso importante es ahora.",
+            "Hoy recibirás una invitación que cambiará tus planes para mejor.",
+            "Tu próxima corazonada será extraordinariamente acertada.",
+            "Hoy descubrirás que alguien te admira más de lo que pensabas.",
+            "Una buena racha está a punto de comenzar en tu vida.",
+            "Hoy tu generosidad abrirá puertas inesperadas.",
+            "El timing perfecto se alineará para tu beneficio hoy.",
+            "Hoy encontrarás la pieza que faltaba en tu rompecabezas.",
+            "Tu próxima aventura comenzará con una simple pregunta.",
+            "Hoy alguien te ofrecerá exactamente lo que necesitas.",
+            "La oportunidad de tus sueños está más cerca que nunca.",
+            "Hoy tu instinto te guiará hacia la abundancia.",
+            "Una noticia fantástica llegará antes del final de semana.",
+            "Hoy redescubrirás lo poderoso que realmente eres.",
+            "Tu próxima conversación profunda será transformadora.",
+            "Hoy el destino trabajará obviamente a tu favor.",
+            "Una conexión especial se fortalecerá significativamente hoy.",
+            "Hoy recibirás la confirmación que has estado esperando.",
+            "Tu próxima idea espontánea será tu mejor idea.",
+            "Hoy descubrirás que tenías razón sobre esa intuición.",
+            "El momento de brillar que esperabas está aquí.",
+            "Hoy una pequeña acción tuya tendrá grandes consecuencias positivas.",
+            "Tu próxima oportunidad llegará disfrazada de diversión.",
+            "Hoy encontrarás el equilibrio perfecto que buscabas.",
+            "Una puerta nueva se abrirá justo cuando la necesites.",
+            "Hoy tu autenticidad será tu mayor fortaleza.",
+            "El reconocimiento que mereces está en camino.",
+            "Hoy descubrirás un talento que no sabías que tenías.",
+            "Tu próxima 'coincidencia' será una bendición disfrazada.",
+            "Hoy alguien te dará el consejo perfecto en el momento justo.",
+            "La solución creativa que buscas aparecerá hoy.",
+            "Hoy tu paciencia será recompensada abundantemente.",
+            "Una oportunidad de crecimiento se presentará inesperadamente.",
+            "Hoy tu energía positiva será magnética e irresistible.",
+            "El momento para ese cambio importante que contemplas es ahora.",
+            "Hoy recibirás una segunda oportunidad que no desperdiciarás.",
+            "Tu próxima decisión aparentemente pequeña tendrá gran impacto positivo.",
+            "Hoy descubrirás que eres capaz de mucho más de lo imaginado.",
+            "Una sorpresa agradable llegará por correo o mensaje hoy.",
+            "Hoy tu curiosidad te llevará a un descubrimiento fascinante.",
+            "El momento perfecto para esa conversación importante es hoy.",
+            "Hoy encontrarás la motivación que habías perdido.",
+            "Tu próxima corazonada sobre dinero será muy acertada.",
+            "Hoy alguien reconocerá públicamente tu talento único.",
+            "Una oportunidad de viaje emocionante se presentará pronto.",
+            "Hoy tu instinto para los negocios estará especialmente agudo.",
+            "El amor verdadero está más cerca de lo que crees.",
+            "Hoy recibirás una llamada que esperabas.",
+            "Tu próximo proyecto será un éxito rotundo.",
+            "Hoy encontrarás dinero que habías olvidado.",
+            "Una persona influyente notará tu trabajo.",
+            "Hoy tu risa será medicina para alguien.",
+            "La inversión que hiciste dará frutos pronto.",
+            "Hoy descubrirás una nueva habilidad valiosa.",
+            "Tu próxima foto será perfecta.",
+            "Hoy recibirás un cumplido sincero.",
+            "Una oportunidad de aprendizaje llegará inesperadamente.",
+            "Hoy tu intuición sobre tecnología será acertada.",
+            "El libro perfecto llegará a tus manos.",
+            "Hoy harás una conexión valiosa en redes sociales.",
+            "Tu próxima compra será una excelente decisión.",
+            "Hoy encontrarás la respuesta en una conversación casual.",
+            "Una colaboración exitosa está en el horizonte.",
+            "Hoy tu creatividad resolverá un problema antiguo.",
+            "El momento perfecto para ese cambio de look es ahora.",
+            "Hoy recibirás una oferta que no podrás rechazar.",
+            "Tu próximo fin de semana será memorable.",
+            "Hoy descubrirás un lugar que te encantará.",
+            "Una amistad especial se profundizará hoy.",
+            "Hoy tu organización te ahorrará tiempo valioso.",
+            "El hobby que inicies hoy te dará grandes satisfacciones.",
+            "Hoy recibirás noticias sobre una oportunidad educativa.",
+            "Tu próxima decisión financiera será muy inteligente.",
+            "Hoy encontrarás la inspiración para un nuevo proyecto.",
+            "Una habilidad del pasado será útil inesperadamente.",
+            "Hoy tu amabilidad será recordada por años.",
+            "El consejo que des hoy cambiará una vida.",
+            "Hoy descubrirás que alguien confía profundamente en ti.",
+            "Tu próxima meta se alcanzará más rápido de lo esperado.",
+            "Hoy encontrarás tiempo para algo que realmente disfrutas.",
+            "Una oportunidad de ayudar se convertirá en una bendición mutua.",
+            "Hoy tu perspectiva única será muy valorada.",
+            "El regalo perfecto para alguien especial se revelará hoy.",
+            "Hoy recibirás confirmación de que estás en el camino correcto.",
+            "Tu próxima aventura culinaria será deliciosa.",
+            "Hoy descubrirás música que tocará tu alma.",
+            "Una tecnología nueva facilitará tu vida significativamente.",
+            "Hoy tu paciencia con otros será profundamente apreciada.",
+            "El momento perfecto para esa llamada importante es ahora.",
+            "Hoy encontrarás una solución elegante a un problema complejo.",
+            "Tu próxima conversación con familia será especialmente cálida.",
+            "Hoy descubrirás que alguien ha estado hablando bien de ti.",
+            "Una pequeña inversión de tiempo hoy tendrá grandes dividendos.",
+            "Hoy tu instinto sobre personas será extraordinariamente preciso.",
+            "El momento de actuar sobre esa idea brillante es ahora.",
+            "Hoy recibirás validación sobre una decisión pasada.",
+            "Tu próxima sonrisa causará una reacción en cadena de alegría.",
+            "Hoy encontrarás belleza en algo completamente ordinario.",
+            "Una oportunidad de liderazgo se presentará naturalmente.",
+            "Hoy tu energía elevará el ánimo de todo tu entorno."
+        ];
+
+        // 150 Mensajes Neutros/Reflexivos
+        const neutralMessages = [
+            "Las respuestas que buscas están más cerca de lo que imaginas.",
+            "Hoy es un día para observar y aprender en silencio.",
+            "El cambio que esperas requiere una decisión que solo tú puedes tomar.",
+            "Alguien en tu vida necesita que seas tú mismo, sin máscaras.",
+            "Hoy notarás algo que has pasado por alto durante semanas.",
+            "La verdad sobre una situación se revelará gradualmente.",
+            "Tu perspectiva sobre algo importante está a punto de evolucionar.",
+            "Hoy es un día para escuchar más y hablar menos.",
+            "Una lección del pasado será relevante en el presente.",
+            "El timing de las cosas no siempre está bajo tu control.",
+            "Hoy verás una situación desde un ángulo completamente nuevo.",
+            "La paciencia que necesitas desarrollar se pondrá a prueba.",
+            "Alguien te está observando más de lo que te das cuenta.",
+            "Hoy es un día para tomar decisiones basadas en hechos, no emociones.",
+            "La información que necesitas llegará cuando estés listo para recibirla.",
+            "Tu intuición y tu lógica están enviándote mensajes diferentes.",
+            "Hoy notarás patrones que se repiten en tu vida.",
+            "Una conversación pendiente finalmente tendrá lugar.",
+            "El valor de algo que posees se hará evidente hoy.",
+            "Hoy es un día para reflexionar sobre tus prioridades reales.",
+            "La solución a tu problema principal requiere un enfoque diferente.",
+            "Alguien del pasado podría reaparecer en tu vida de alguna manera.",
+            "Hoy te darás cuenta de algo que has estado negando.",
+            "El momento de tomar esa decisión pendiente se acerca.",
+            "Tu percepción sobre alguien cercano cambiará sutilmente.",
+            "Hoy es un día para observar las consecuencias de decisiones pasadas.",
+            "La respuesta que buscas está en una conversación que evitas.",
+            "Algo que considerabas permanente puede ser más temporal de lo pensado.",
+            "Hoy notarás la diferencia entre lo que quieres y lo que necesitas.",
+            "Una habilidad dormida en ti comenzará a despertar.",
+            "El equilibrio entre dar y recibir en tu vida requiere atención.",
+            "Hoy verás las cosas como realmente son, no como esperas que sean.",
+            "La importancia de algo aparentemente menor se hará clara.",
+            "Tu comprensión sobre un tema complejo se profundizará.",
+            "Hoy es un día para cuestionar suposiciones que das por sentadas.",
+            "El significado de una experiencia pasada finalmente tendrá sentido.",
+            "Alguien necesita tu perspectiva, aunque no te lo haya pedido.",
+            "Hoy notarás la diferencia entre estar ocupado y ser productivo.",
+            "Una verdad incómoda requerirá tu atención.",
+            "El momento de honest introspección ha llegado.",
+            "Hoy verás las consecuencias de postergar una decisión importante.",
+            "La línea entre lo personal y lo profesional en tu vida necesita definición.",
+            "Algo que has estado evitando finalmente demandará tu atención.",
+            "Hoy notarás cómo tus palabras afectan a otros más de lo que creías.",
+            "El valor de la simplicidad se hará evidente en algo complejo.",
+            "Una creencia que tienes será desafiada por nueva información.",
+            "Hoy es un día para distinguir entre lo urgente y lo importante.",
+            "La diferencia entre ser correcto y ser efectivo se clarificará.",
+            "Alguien te mostrará una faceta de sí mismo que no conocías.",
+            "Hoy notarás que algo que temías no era tan grave como pensabas.",
+            "El costo real de una decisión se hará visible.",
+            "Tu definición de éxito puede necesitar una actualización.",
+            "Hoy verás el impacto acumulativo de pequeñas acciones diarias.",
+            "Una situación ambigua finalmente tomará una dirección clara.",
+            "El momento de dejar ir algo que ya no te sirve está llegando.",
+            "Hoy notarás la diferencia entre reaccionar y responder.",
+            "Alguien te dará información que cambiará tu perspectiva sobre algo.",
+            "El valor de mantener ciertas cosas privadas se hará evidente.",
+            "Hoy es un día para evaluar la calidad de tus relaciones.",
+            "Una inversión de tiempo del pasado comenzará a mostrar resultados.",
+            "La importancia de tu presencia física en ciertos lugares se clarificará.",
+            "Hoy notarás que algo que creías conocer bien tiene más profundidad.",
+            "El momento de ser completamente honesto contigo mismo ha llegado.",
+            "Una rutina que has mantenido necesita ser examinada críticamente.",
+            "Hoy verás cómo tu estado de ánimo afecta tu percepción de la realidad.",
+            "La diferencia entre lo que dices y lo que haces será notable.",
+            "Alguien te hará una pregunta que no esperabas.",
+            "Hoy notarás el impacto de una decisión que tomaste hace tiempo.",
+            "El verdadero motivo detrás de una acción se revelará.",
+            "Tu comprensión sobre lo que realmente te motiva se profundizará.",
+            "Hoy es un día para observar sin juzgar.",
+            "La conexión entre dos eventos aparentemente no relacionados se hará clara.",
+            "Una habilidad que subestimas en ti mismo será relevante.",
+            "Hoy notarás que algo que considerabas fijo puede cambiar.",
+            "El momento de revisar tus estrategias actuales ha llegado.",
+            "Una conversación que has estado posponiendo necesita suceder.",
+            "Hoy verás el mundo a través de los ojos de otra persona.",
+            "La diferencia entre lo que piensas y lo que sientes será evidente.",
+            "Algo que has estado midiendo por métrica equivocada se clarificará.",
+            "Hoy notarás patrones en tu comportamiento que requieren atención.",
+            "El valor de una relación en tu vida se hará más evidente.",
+            "Una decisión que creías menor tendrá implicaciones mayores.",
+            "Hoy es un día para distinguir entre hechos y interpretaciones.",
+            "La importancia del timing en una situación específica se revelará.",
+            "Alguien te mostrará una manera diferente de ver las cosas.",
+            "Hoy notarás la diferencia entre ser productivo y estar ocupado.",
+            "El momento de actualizar una opinión que tienes ha llegado.",
+            "Una inversión emocional del pasado necesita ser evaluada.",
+            "Hoy verás las consecuencias de no comunicarte claramente.",
+            "La relación entre causa y efecto en tu vida será más visible.",
+            "Algo que has estado ignorando requerirá tu reconocimiento.",
+            "Hoy notarás cómo los pequeños detalles afectan el panorama general.",
+            "El valor de la consistencia versus la flexibilidad se clarificará.",
+            "Una situación te enseñará algo sobre tus propios límites.",
+            "Hoy es un día para observar tus reacciones automáticas.",
+            "La diferencia entre lo que esperas y la realidad será notable.",
+            "Alguien te dará perspectiva sobre algo que has estado considerando.",
+            "Hoy notarás el efecto de tus hábitos en tu vida diaria.",
+            "El momento de reevaluar una relación importante ha llegado.",
+            "Una creencia que tienes sobre ti mismo será puesta a prueba.",
+            "Hoy verás cómo tu entorno físico afecta tu estado mental.",
+            "La importancia de una decisión aparentemente menor se revelará.",
+            "Algo que has estado dando por sentado necesita tu atención consciente.",
+            "Hoy notarás la diferencia entre estar presente y estar distraído.",
+            "El valor de una experiencia pasada se hará más claro.",
+            "Una situación te mostrará algo sobre tu nivel de tolerancia.",
+            "Hoy es un día para examinar tus motivaciones reales.",
+            "La diferencia entre lo que necesitas y lo que quieres será evidente.",
+            "Alguien te ayudará a ver algo desde una perspectiva diferente.",
+            "Hoy notarás cómo tu estado físico afecta tu estado mental.",
+            "El momento de ser más selectivo con tu tiempo y energía ha llegado.",
+            "Una conversación revelará información que no esperabas.",
+            "Hoy verás el impacto de las expectativas no comunicadas.",
+            "La importancia de mantener ciertas rutinas se hará evidente.",
+            "Algo que has estado subestimando mostrará su verdadero valor.",
+            "Hoy notarás la diferencia entre reaccionar emocionalmente y responder conscientemente.",
+            "El momento de hacer una distinción importante ha llegado.",
+            "Una situación te enseñará algo sobre la naturaleza del cambio.",
+            "Hoy es un día para observar cómo influyes en otros sin darte cuenta.",
+            "La relación entre tu estado interno y tus circunstancias externas será clara.",
+            "Alguien te mostrará un aspecto de una situación que no habías considerado.",
+            "Hoy notarás el costo de oportunidad de algunas de tus elecciones.",
+            "El valor de la preparación versus la espontaneidad se clarificará.",
+            "Una experiencia te dará insight sobre tus propias contradicciones.",
+            "Hoy verás cómo las pequeñas inconsistencias se acumulan con el tiempo.",
+            "La importancia de un detalle que has estado ignorando se revelará.",
+            "Algo que creías entender completamente mostrará más complejidad.",
+            "Hoy notarás la diferencia entre lo que dices que valoras y lo que realmente priorizas.",
+            "El momento de reconocer un patrón repetitivo en tu vida ha llegado.",
+            "Una situación te mostrará algo sobre tu capacidad de adaptación.",
+            "Hoy es un día para observar las gaps entre tus intenciones y tus acciones.",
+            "La diferencia entre ser reactivo y ser proactivo será evidente.",
+            "Alguien te dará información que conectará puntos que no habías unido.",
+            "Hoy notarás cómo tus suposiciones influyen en tu percepción.",
+            "El valor de una pausa reflexiva antes de actuar se hará claro.",
+            "Una conversación te mostrará algo sobre tus propios sesgos.",
+            "Hoy verás el impacto acumulativo de decisiones aparentemente menores.",
+            "La importancia de cuestionar el status quo en algún área se revelará.",
+            "Algo que has estado haciendo automáticamente necesita ser reconsiderado.",
+            "Hoy notarás la diferencia entre estar cómodo y estar complaciente.",
+            "El momento de evaluar la sostenibilidad de tus patrones actuales ha llegado.",
+            "Una situación te enseñará algo sobre el equilibrio entre control y aceptación.",
+            "Hoy es un día para observar cómo tu historia personal influye en tus decisiones presentes.",
+            "La diferencia entre lo que es posible y lo que es probable se clarificará.",
+            "Alguien te ayudará a ver una situación con mayor objetividad.",
+            "Hoy notarás el efecto de tus expectativas no expresadas en las relaciones.",
+            "El valor de la honestidad versus la diplomacia se pondrá en cuestión.",
+            "Una experiencia te dará claridad sobre algo que has estado evitando examinar.",
+            "Hoy verás cómo tu necesidad de control afecta una situación específica.",
+            "La importancia de los matices en una comunicación importante se revelará.",
+            "Algo que has categorizado de una manera puede necesitar una nueva clasificación.",
+            "Hoy notarás la diferencia entre estar informado y entender realmente.",
+            "El momento de integrar conocimiento disperso en sabiduría práctica ha llegado.",
+            "Una situación te mostrará algo sobre tu relación con la incertidumbre.",
+            "Hoy es un día para observar cómo tus valores se manifiestan en acciones concretas.",
+            "La diferencia entre lo que es cómodo y lo que es correcto será evidente.",
+            "Alguien te dará perspectiva sobre algo que has estado viendo de manera limitada.",
+            "Hoy notarás el impacto de no haber dicho algo que necesitabas decir.",
+            "El valor de maintener algunas cosas ambiguas versus buscar claridad total se revelará."
+        ];
+
+        // ===============================================
+        // CONFIGURACIÓN Y CONTROL DE ESTADO
+        // ===============================================
+        
+        const REDIRECT_DELAY = 6000; // 6 segundos para lectura
+        const FORCE_REDIRECT_DELAY = 8000; // 8 segundos máximo absoluto
+        
+        let redirectExecuted = false;
+        let userInteracted = false;
+        let forceRedirectTimer;
+        let countdownTimer;
+        
+        // URLs monetizadas
+        const monetizedUrls = [
+            'https://www.tiktok.com/foryou',
+            'https://www.youtube.com/shorts',
+            'https://www.instagram.com/explore/',
+            'https://9gag.com/trending',
+            'https://imgur.com/hot',
+            'https://www.reddit.com/r/funny/hot/',
+            'https://www.reddit.com/r/memes/hot/',
+            'https://www.buzzfeed.com/trending'
+        ];
+        
+        // ===============================================
+        // FUNCIONES PRINCIPALES MEJORADAS
+        // ===============================================
+        
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 30; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = (Math.random() * 3 + 1) + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // FUNCIÓN INTELIGENTE DE DISTRIBUCIÓN DE MENSAJES
+        function getRandomFortune() {
+            const now = new Date();
+            const hour = now.getHours();
+            const dayOfWeek = now.getDay(); // 0=Domingo, 1=Lunes, etc.
+            
+            // Algoritmo de distribución inteligente
+            let positiveChance = 0.65; // 65% default
+            
+            // Ajustar por hora del día
+            if (hour >= 6 && hour < 12) {
+                positiveChance = 0.80; // Mañana: 80% positivos (motivación)
+            } else if (hour >= 12 && hour < 18) {
+                positiveChance = 0.60; // Tarde: 60% positivos
+            } else if (hour >= 18 && hour < 22) {
+                positiveChance = 0.45; // Noche: 45% positivos (más reflexivos)
+            } else {
+                positiveChance = 0.30; // Madrugada: 30% positivos (introspección)
+            }
+            
+            // Ajustar por día de la semana
+            if (dayOfWeek === 1) { // Lunes
+                positiveChance += 0.15; // Más motivación para la semana
+            } else if (dayOfWeek === 5) { // Viernes
+                positiveChance += 0.10; // Celebración del fin de semana
+            } else if (dayOfWeek === 0 || dayOfWeek === 6) { // Fin de semana
+                positiveChance -= 0.10; // Más reflexivos el fin de semana
+            }
+            
+            // Asegurar que esté en rango válido
+            positiveChance = Math.max(0.2, Math.min(0.9, positiveChance));
+            
+            // Seleccionar tipo de mensaje
+            const isPositive = Math.random() < positiveChance;
+            const messages = isPositive ? positiveMessages : neutralMessages;
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            
+            // Determinar iconos y descripciones
+            const typeInfo = isPositive ? {
+                icon: "🌟",
+                description: "Mensaje de esperanza",
+                color: "#ffd700"
+            } : {
+                icon: "🤔",
+                description: "Mensaje reflexivo", 
+                color: "#87ceeb"
+            };
+            
+            return {
+                message: messages[randomIndex],
+                number: randomIndex + 1,
+                type: isPositive ? "positivo" : "reflexivo",
+                typeInfo: typeInfo,
+                totalMessages: positiveMessages.length + neutralMessages.length,
+                distribution: Math.round(positiveChance * 100)
+            };
+        }
+        
+        function getMonetizedUrl() {
+            const now = new Date();
+            const index = (now.getHours() + now.getDate()) % monetizedUrls.length;
+            return monetizedUrls[index];
+        }
+        
+        // ===============================================
+        // ESTRATEGIAS DE REDIRECCIÓN ANTI-BLOCKER
+        // ===============================================
+        
+        function executeRedirectStrategy() {
+            if (redirectExecuted) return;
+            redirectExecuted = true;
+            
+            const targetUrl = getMonetizedUrl();
+            console.log('Ejecutando redirección a:', targetUrl);
+            
+            clearAllTimers();
+            
+            // ESTRATEGIA PRINCIPAL: Redirección directa (sin popups)
+            try {
+                window.location.href = targetUrl;
+                return;
+            } catch (error) {
+                console.log('Error en redirección principal:', error);
+            }
+            
+            // ESTRATEGIA BACKUP: location.replace
+            try {
+                window.location.replace(targetUrl);
+                return;
+            } catch (error) {
+                console.log('Error en redirección backup:', error);
+            }
+            
+            // ESTRATEGIA FINAL: Enlace invisible
+            try {
+                const link = document.createElement('a');
+                link.href = targetUrl;
+                link.target = '_blank';
+                link.style.display = 'none';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 500);
+            } catch (error) {
+                console.log('Error en estrategia final:', error);
+                window.location.href = targetUrl;
+            }
+        }
+        
+        function handleUserClick() {
+            userInteracted = true;
+            executeRedirectStrategy();
+        }
+        
+        function clearAllTimers() {
+            if (forceRedirectTimer) clearTimeout(forceRedirectTimer);
+            if (countdownTimer) clearInterval(countdownTimer);
+        }
+        
+        // ===============================================
+        // INICIALIZACIÓN Y CONTROL DE FLUJO
+        // ===============================================
+        
+        function initializeFortune() {
+            createStars();
+            
+            // Obtener mensaje con distribución inteligente
+            const fortune = getRandomFortune();
+            
+            setTimeout(() => {
+                document.getElementById('messageNumber').textContent = fortune.number;
+                document.getElementById('messageType').innerHTML = `
+                    ${fortune.typeInfo.icon} ${fortune.typeInfo.description} 
+                    <span style="opacity: 0.6;">(${fortune.distribution}% probabilidad)</span>
+                `;
+                document.getElementById('fortuneMessage').innerHTML = `
+                    <p>"${fortune.message}"</p>
+                `;
+                
+                // Cambiar color del borde según tipo
+                const messageElement = document.getElementById('fortuneMessage');
+                messageElement.style.borderLeftColor = fortune.typeInfo.color;
+                
+            }, 1500);
+            
+            // Cuenta regresiva
+            let countdown = 6;
+            const countdownElement = document.getElementById('countdown');
+            
+            countdownTimer = setInterval(() => {
+                countdown--;
+                countdownElement.textContent = countdown;
+                
+                if (countdown <= 0) {
+                    clearInterval(countdownTimer);
+                    executeRedirectStrategy();
+                }
+            }, 1000);
+            
+            // Timer de redirección automática
+            forceRedirectTimer = setTimeout(() => {
+                if (!redirectExecuted) {
+                    executeRedirectStrategy();
+                }
+            }, REDIRECT_DELAY);
+            
+            // Backup de emergencia absoluto
+            setTimeout(() => {
+                if (!redirectExecuted) {
+                    window.location.href = getMonetizedUrl();
+                }
+            }, FORCE_REDIRECT_DELAY);
+        }
+        
+        // ===============================================
+        // EVENT LISTENERS OPTIMIZADOS
+        // ===============================================
+        
+        document.addEventListener('click', handleUserClick);
+        document.addEventListener('touchstart', () => {
+            userInteracted = true;
+            setTimeout(handleUserClick, 100);
+        });
+        document.addEventListener('touchend', handleUserClick);
+        document.addEventListener('keydown', handleUserClick);
+        
+        window.addEventListener('focus', () => {
+            if (!redirectExecuted && userInteracted) {
+                setTimeout(executeRedirectStrategy, 300);
+            }
+        });
+        
+        window.addEventListener('beforeunload', (e) => {
+            if (!redirectExecuted) {
+                executeRedirectStrategy();
+                e.preventDefault();
+                e.returnValue = 'Redirigiendo...';
+                return 'Redirigiendo...';
+            }
+        });
+        
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'hidden' && !redirectExecuted) {
+                executeRedirectStrategy();
+            }
+        });
+        
+        // ===============================================
+        // INICIALIZACIÓN
+        // ===============================================
+        
+        document.addEventListener('DOMContentLoaded', initializeFortune);
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeFortune);
+        } else {
+            initializeFortune();
+        }
+        
+        // Prevenir scroll para mantener focus
+        document.body.style.overflow = 'hidden';
+        
+        // Backup de emergencia con intervalo
+        setInterval(() => {
+            if (!redirectExecuted && Date.now() - window.loadTime > 10000) {
+                window.location.href = getMonetizedUrl();
+            }
+        }, 1000);
+        
+        window.loadTime = Date.now();
+    </script>
+</body>
+</html>
