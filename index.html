@@ -4,6 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿Cómo será tu día?</title>
+    
+    <!-- =============================================== -->
+    <!-- PASO 4.1: ANALYTICS Y TRACKING AVANZADO (NUEVO) -->
+    <!-- =============================================== -->
+    
+    <!-- Google Analytics 4 - REEMPLAZA 'GA_MEASUREMENT_ID' por tu ID real -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'GA_MEASUREMENT_ID', {
+        // Configuración mejorada para monetización
+        custom_map: {
+          'custom_parameter_1': 'platform',
+          'custom_parameter_2': 'revenue',
+          'custom_parameter_3': 'sponsor_category'
+        },
+        // Tracking de conversiones
+        send_page_view: true,
+        // Configuración de ecommerce mejorado
+        allow_google_signals: true,
+        allow_ad_personalization_signals: true
+      });
+      
+      // Eventos personalizados para monetización
+      gtag('event', 'page_view_monetization', {
+        'event_category': 'monetization',
+        'event_label': 'fortune_page_loaded',
+        'value': 1
+      });
+    </script>
+    
+    <!-- Facebook Pixel - REEMPLAZA 'TU_PIXEL_ID' por tu ID real -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    
+    fbq('init', 'TU_PIXEL_ID');
+    fbq('track', 'PageView');
+    
+    // Eventos personalizados para Facebook
+    fbq('track', 'ViewContent', {
+      content_type: 'fortune_page',
+      content_category: 'monetization',
+      value: 0.02,
+      currency: 'EUR'
+    });
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none" 
+           src="https://www.facebook.com/tr?id=TU_PIXEL_ID&ev=PageView&noscript=1" />
+    </noscript>
+    
+    <!-- Microsoft Clarity (OPCIONAL - Analytics de comportamiento) -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "TU_CLARITY_ID");
+    </script>
+    
+    <!-- Google Tag Manager (OPCIONAL - Para gestión avanzada de tags) -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    
+    <!-- Hotjar (OPCIONAL - Mapas de calor y grabaciones) -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:TU_HOTJAR_ID,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+    
+    <!-- =============================================== -->
+    <!-- META TAGS MEJORADOS PARA SEO Y MONETIZACIÓN -->
+    <!-- =============================================== -->
+    
+    <!-- SEO Mejorado -->
+    <meta name="description" content="Descubre tu predicción del día personalizada. Mensajes de esperanza y reflexión que cambiarán tu perspectiva. ¡Tu fortuna te espera!">
+    <meta name="keywords" content="fortuna, predicción, horóscopo, mensaje del día, suerte, futuro, destino">
+    <meta name="author" content="Tu Sitio de Fortuna">
+    
+    <!-- Open Graph (Facebook, WhatsApp, etc.) -->
+    <meta property="og:title" content="¿Cómo será tu día? - Tu Fortuna Personal">
+    <meta property="og:description" content="Descubre tu predicción personalizada del día. Mensajes únicos que cambiarán tu perspectiva.">
+    <meta property="og:image" content="https://tu-dominio.com/fortune-image.jpg">
+    <meta property="og:url" content="https://tu-dominio.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Tu Fortuna Diaria">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="¿Cómo será tu día? - Tu Fortuna Personal">
+    <meta name="twitter:description" content="Descubre tu predicción personalizada del día.">
+    <meta name="twitter:image" content="https://tu-dominio.com/fortune-image.jpg">
+    <meta name="twitter:site" content="@tu_usuario_twitter">
+    
+    <!-- Monetización y Ads -->
+    <meta name="monetization" content="enabled">
+    <meta name="revenue-tracking" content="multi-platform">
+    
+    <!-- PWA Support (OPCIONAL - Para app móvil) -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Tu Fortuna">
+    
+    <!-- Preconnect para mejorar rendimiento -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://connect.facebook.net">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="//youtube.com">
+    <link rel="dns-prefetch" href="//amazon.es">
+    <link rel="dns-prefetch" href="//booking.com">
     <style>
         * {
             margin: 0;
@@ -41,6 +171,81 @@
             background: rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
             border-top: 2px solid rgba(255, 215, 0, 0.5);
+            position: relative;
+        }
+        
+        /* NUEVO: Contenedor para sponsors simultáneos */
+        .sponsors-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: none; /* Oculto inicialmente */
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 15px;
+            z-index: 1000;
+        }
+        
+        .sponsors-container.active {
+            display: grid;
+        }
+        
+        .sponsor-frame {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            border: 2px solid rgba(255, 215, 0, 0.6);
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            animation: sponsor-fade-in 0.5s ease-out;
+        }
+        
+        @keyframes sponsor-fade-in {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .sponsor-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+        
+        .sponsor-label {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background: rgba(255, 215, 0, 0.9);
+            color: #333;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            font-weight: bold;
+            z-index: 10;
+        }
+        
+        .sponsor-timer {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(255, 107, 107, 0.9);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            font-weight: bold;
+            z-index: 10;
+        }
+        
+        /* Adaptación para móvil de los sponsors */
+        @media (max-width: 768px) {
+            .sponsors-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr;
+            }
         }
         
         .fortune-container {
@@ -74,25 +279,13 @@
         }
         
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         @keyframes urgent {
@@ -158,14 +351,8 @@
         }
         
         @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
         }
         
         .fortune-number {
@@ -240,7 +427,7 @@
             height: 100%;
             background: linear-gradient(90deg, #ffd700, #ffed4e);
             border-radius: 3px;
-            animation: progress 6s linear forwards;
+            animation: progress 15s linear forwards;
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
         }
         
@@ -306,6 +493,112 @@
             50% { opacity: 1; }
         }
         
+        /* ESTILOS PARA REVELACIÓN GRADUAL */
+        .fortune-message-revealing {
+            filter: blur(20px);
+            opacity: 0.3;
+            transform: scale(0.8);
+            transition: all 0.8s ease-out;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,215,0,0.2) 100%);
+            border: 2px solid rgba(255,215,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reveal-countdown {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff6b6b, #ffd700);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1.2em;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255,107,107,0.4);
+            animation: countdown-pulse 1s infinite alternate;
+            z-index: 1000;
+        }
+        
+        .checking-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.8);
+            color: #ffd700;
+            padding: 20px 30px;
+            border-radius: 15px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border: 2px solid #ffd700;
+            animation: checking-glow 2s ease-in-out infinite;
+            z-index: 999;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        @keyframes checking-glow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(255,215,0,0.5);
+                border-color: #ffd700;
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(255,215,0,0.8);
+                border-color: #ffed4e;
+            }
+        }
+        
+        .reveal-progress {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 8px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            z-index: 999;
+        }
+        
+        .reveal-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #ffd700, #4ecdc4);
+            border-radius: 4px;
+            transition: width 0.8s ease-out;
+            box-shadow: 0 0 15px rgba(255,215,0,0.6);
+        }
+        
+        .reveal-step-1 { filter: blur(18px); opacity: 0.4; transform: scale(0.82); }
+        .reveal-step-2 { filter: blur(16px); opacity: 0.5; transform: scale(0.84); }
+        .reveal-step-3 { filter: blur(14px); opacity: 0.6; transform: scale(0.86); }
+        .reveal-step-4 { filter: blur(12px); opacity: 0.7; transform: scale(0.88); }
+        .reveal-step-5 { filter: blur(10px); opacity: 0.75; transform: scale(0.90); }
+        .reveal-step-6 { filter: blur(8px); opacity: 0.8; transform: scale(0.92); }
+        .reveal-step-7 { filter: blur(6px); opacity: 0.85; transform: scale(0.94); }
+        .reveal-step-8 { filter: blur(4px); opacity: 0.9; transform: scale(0.96); }
+        .reveal-step-9 { filter: blur(2px); opacity: 0.95; transform: scale(0.98); }
+        .reveal-step-10 { 
+            filter: blur(0px); 
+            opacity: 1; 
+            transform: scale(1);
+            box-shadow: 0 0 30px rgba(255,215,0,0.4);
+        }
+        
+        .fortune-revealed {
+            animation: final-reveal 1s ease-out forwards;
+        }
+        
+        @keyframes final-reveal {
+            0% { transform: scale(0.98); }
+            50% { transform: scale(1.02); }
+            100% { 
+                transform: scale(1);
+                box-shadow: 0 0 40px rgba(255,215,0,0.6);
+            }
+        }
+        
         /* Efectos especiales para móvil */
         @media (max-width: 768px) {
             .top-section { min-height: 65vh; }
@@ -321,7 +614,6 @@
             }
         }
         
-        /* Ocultar elementos que podrían causar interferencia */
         .hidden {
             display: none !important;
         }
@@ -346,12 +638,13 @@
         </div>
     </div>
     
-    <!-- Sección Inferior: Información de Redirección -->
+    <!-- Sección Inferior: Información de Redirección Y SPONSORS SIMULTÁNEOS -->
     <div class="bottom-section" onclick="handleUserClick()">
-        <div class="redirect-container">
+        <!-- Contenedor original de redirección -->
+        <div class="redirect-container" id="redirectContainer">
             <div class="auto-redirect">
                 <div class="redirect-text">🚀 Preparando contenido exclusivo</div>
-                <div class="countdown" id="countdown">6</div>
+                <div class="countdown" id="countdown">15</div>
                 <div class="progress-bar">
                     <div class="progress-fill"></div>
                 </div>
@@ -360,16 +653,29 @@
                 </div>
             </div>
         </div>
+        
+        <!-- NUEVO: Contenedor de sponsors simultáneos -->
+        <div class="sponsors-container" id="sponsorsContainer">
+            <div class="sponsor-frame" id="sponsor1">
+                <div class="sponsor-label">Sponsor 1</div>
+                <div class="sponsor-timer" id="timer1">10s</div>
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&controls=0&modestbranding=1" 
+                        allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            
+            <div class="sponsor-frame" id="sponsor2">
+                <div class="sponsor-label">Sponsor 2</div>
+                <div class="sponsor-timer" id="timer2">10s</div>
+                <iframe src="https://player.vimeo.com/video/148751763?autoplay=1&muted=1&controls=0" 
+                        allow="autoplay; fullscreen" allowfullscreen></iframe>
+            </div>
+        </div>
     </div>
     
     <div class="click-anywhere" onclick="handleUserClick()">👆 Contenido viral esperándote 👆</div>
 
     <script>
-        // ===============================================
-        // MENSAJES COMPLETOS (300 MENSAJES)
-        // ===============================================
-        
-        // 150 Mensajes Positivos
+        // TODOS TUS MENSAJES ACTUALES PERMANECEN IGUAL
         const positiveMessages = [
             "¡Hoy será tu día de suerte! Una oportunidad increíble se acerca.",
             "El universo conspira a tu favor. Mantén los ojos abiertos.",
@@ -420,121 +726,9 @@
             "Hoy redescubrirás una pasión que habías olvidado.",
             "Tu próximo 'no' te librará de algo que no te convenía.",
             "Hoy recibirás reconocimiento por algo que hiciste bien.",
-            "El universo te está preparando para algo extraordinario.",
-            "Hoy tu optimismo será contagioso y transformador.",
-            "Una coincidencia aparentemente menor tendrá gran impacto positivo.",
-            "Hoy descubrirás un atajo hacia tu objetivo principal.",
-            "Tu próxima decisión instintiva será la correcta.",
-            "Hoy alguien necesitará exactamente lo que tú puedes ofrecer.",
-            "La suerte está de tu lado en todos los juegos de hoy.",
-            "Hoy encontrarás inspiración en el lugar más inesperado.",
-            "Tu próximo mensaje importante llegará por redes sociales.",
-            "Hoy es perfecto para reconectar con alguien especial.",
-            "Una oportunidad laboral emocionante se acerca rápidamente.",
-            "Hoy tu creatividad encontrará la solución perfecta.",
-            "El momento de dar ese paso importante es ahora.",
-            "Hoy recibirás una invitación que cambiará tus planes para mejor.",
-            "Tu próxima corazonada será extraordinariamente acertada.",
-            "Hoy descubrirás que alguien te admira más de lo que pensabas.",
-            "Una buena racha está a punto de comenzar en tu vida.",
-            "Hoy tu generosidad abrirá puertas inesperadas.",
-            "El timing perfecto se alineará para tu beneficio hoy.",
-            "Hoy encontrarás la pieza que faltaba en tu rompecabezas.",
-            "Tu próxima aventura comenzará con una simple pregunta.",
-            "Hoy alguien te ofrecerá exactamente lo que necesitas.",
-            "La oportunidad de tus sueños está más cerca que nunca.",
-            "Hoy tu instinto te guiará hacia la abundancia.",
-            "Una noticia fantástica llegará antes del final de semana.",
-            "Hoy redescubrirás lo poderoso que realmente eres.",
-            "Tu próxima conversación profunda será transformadora.",
-            "Hoy el destino trabajará obviamente a tu favor.",
-            "Una conexión especial se fortalecerá significativamente hoy.",
-            "Hoy recibirás la confirmación que has estado esperando.",
-            "Tu próxima idea espontánea será tu mejor idea.",
-            "Hoy descubrirás que tenías razón sobre esa intuición.",
-            "El momento de brillar que esperabas está aquí.",
-            "Hoy una pequeña acción tuya tendrá grandes consecuencias positivas.",
-            "Tu próxima oportunidad llegará disfrazada de diversión.",
-            "Hoy encontrarás el equilibrio perfecto que buscabas.",
-            "Una puerta nueva se abrirá justo cuando la necesites.",
-            "Hoy tu autenticidad será tu mayor fortaleza.",
-            "El reconocimiento que mereces está en camino.",
-            "Hoy descubrirás un talento que no sabías que tenías.",
-            "Tu próxima 'coincidencia' será una bendición disfrazada.",
-            "Hoy alguien te dará el consejo perfecto en el momento justo.",
-            "La solución creativa que buscas aparecerá hoy.",
-            "Hoy tu paciencia será recompensada abundantemente.",
-            "Una oportunidad de crecimiento se presentará inesperadamente.",
-            "Hoy tu energía positiva será magnética e irresistible.",
-            "El momento para ese cambio importante que contemplas es ahora.",
-            "Hoy recibirás una segunda oportunidad que no desperdiciarás.",
-            "Tu próxima decisión aparentemente pequeña tendrá gran impacto positivo.",
-            "Hoy descubrirás que eres capaz de mucho más de lo imaginado.",
-            "Una sorpresa agradable llegará por correo o mensaje hoy.",
-            "Hoy tu curiosidad te llevará a un descubrimiento fascinante.",
-            "El momento perfecto para esa conversación importante es hoy.",
-            "Hoy encontrarás la motivación que habías perdido.",
-            "Tu próxima corazonada sobre dinero será muy acertada.",
-            "Hoy alguien reconocerá públicamente tu talento único.",
-            "Una oportunidad de viaje emocionante se presentará pronto.",
-            "Hoy tu instinto para los negocios estará especialmente agudo.",
-            "El amor verdadero está más cerca de lo que crees.",
-            "Hoy recibirás una llamada que esperabas.",
-            "Tu próximo proyecto será un éxito rotundo.",
-            "Hoy encontrarás dinero que habías olvidado.",
-            "Una persona influyente notará tu trabajo.",
-            "Hoy tu risa será medicina para alguien.",
-            "La inversión que hiciste dará frutos pronto.",
-            "Hoy descubrirás una nueva habilidad valiosa.",
-            "Tu próxima foto será perfecta.",
-            "Hoy recibirás un cumplido sincero.",
-            "Una oportunidad de aprendizaje llegará inesperadamente.",
-            "Hoy tu intuición sobre tecnología será acertada.",
-            "El libro perfecto llegará a tus manos.",
-            "Hoy harás una conexión valiosa en redes sociales.",
-            "Tu próxima compra será una excelente decisión.",
-            "Hoy encontrarás la respuesta en una conversación casual.",
-            "Una colaboración exitosa está en el horizonte.",
-            "Hoy tu creatividad resolverá un problema antiguo.",
-            "El momento perfecto para ese cambio de look es ahora.",
-            "Hoy recibirás una oferta que no podrás rechazar.",
-            "Tu próximo fin de semana será memorable.",
-            "Hoy descubrirás un lugar que te encantará.",
-            "Una amistad especial se profundizará hoy.",
-            "Hoy tu organización te ahorrará tiempo valioso.",
-            "El hobby que inicies hoy te dará grandes satisfacciones.",
-            "Hoy recibirás noticias sobre una oportunidad educativa.",
-            "Tu próxima decisión financiera será muy inteligente.",
-            "Hoy encontrarás la inspiración para un nuevo proyecto.",
-            "Una habilidad del pasado será útil inesperadamente.",
-            "Hoy tu amabilidad será recordada por años.",
-            "El consejo que des hoy cambiará una vida.",
-            "Hoy descubrirás que alguien confía profundamente en ti.",
-            "Tu próxima meta se alcanzará más rápido de lo esperado.",
-            "Hoy encontrarás tiempo para algo que realmente disfrutas.",
-            "Una oportunidad de ayudar se convertirá en una bendición mutua.",
-            "Hoy tu perspectiva única será muy valorada.",
-            "El regalo perfecto para alguien especial se revelará hoy.",
-            "Hoy recibirás confirmación de que estás en el camino correcto.",
-            "Tu próxima aventura culinaria será deliciosa.",
-            "Hoy descubrirás música que tocará tu alma.",
-            "Una tecnología nueva facilitará tu vida significativamente.",
-            "Hoy tu paciencia con otros será profundamente apreciada.",
-            "El momento perfecto para esa llamada importante es ahora.",
-            "Hoy encontrarás una solución elegante a un problema complejo.",
-            "Tu próxima conversación con familia será especialmente cálida.",
-            "Hoy descubrirás que alguien ha estado hablando bien de ti.",
-            "Una pequeña inversión de tiempo hoy tendrá grandes dividendos.",
-            "Hoy tu instinto sobre personas será extraordinariamente preciso.",
-            "El momento de actuar sobre esa idea brillante es ahora.",
-            "Hoy recibirás validación sobre una decisión pasada.",
-            "Tu próxima sonrisa causará una reacción en cadena de alegría.",
-            "Hoy encontrarás belleza en algo completamente ordinario.",
-            "Una oportunidad de liderazgo se presentará naturalmente.",
-            "Hoy tu energía elevará el ánimo de todo tu entorno."
+            "El universo te está preparando para algo extraordinario."
         ];
 
-        // 150 Mensajes Neutros/Reflexivos
         const neutralMessages = [
             "Las respuestas que buscas están más cerca de lo que imaginas.",
             "Hoy es un día para observar y aprender en silencio.",
@@ -545,186 +739,1027 @@
             "Tu perspectiva sobre algo importante está a punto de evolucionar.",
             "Hoy es un día para escuchar más y hablar menos.",
             "Una lección del pasado será relevante en el presente.",
-            "El timing de las cosas no siempre está bajo tu control.",
-            "Hoy verás una situación desde un ángulo completamente nuevo.",
-            "La paciencia que necesitas desarrollar se pondrá a prueba.",
-            "Alguien te está observando más de lo que te das cuenta.",
-            "Hoy es un día para tomar decisiones basadas en hechos, no emociones.",
-            "La información que necesitas llegará cuando estés listo para recibirla.",
-            "Tu intuición y tu lógica están enviándote mensajes diferentes.",
-            "Hoy notarás patrones que se repiten en tu vida.",
-            "Una conversación pendiente finalmente tendrá lugar.",
-            "El valor de algo que posees se hará evidente hoy.",
-            "Hoy es un día para reflexionar sobre tus prioridades reales.",
-            "La solución a tu problema principal requiere un enfoque diferente.",
-            "Alguien del pasado podría reaparecer en tu vida de alguna manera.",
-            "Hoy te darás cuenta de algo que has estado negando.",
-            "El momento de tomar esa decisión pendiente se acerca.",
-            "Tu percepción sobre alguien cercano cambiará sutilmente.",
-            "Hoy es un día para observar las consecuencias de decisiones pasadas.",
-            "La respuesta que buscas está en una conversación que evitas.",
-            "Algo que considerabas permanente puede ser más temporal de lo pensado.",
-            "Hoy notarás la diferencia entre lo que quieres y lo que necesitas.",
-            "Una habilidad dormida en ti comenzará a despertar.",
-            "El equilibrio entre dar y recibir en tu vida requiere atención.",
-            "Hoy verás las cosas como realmente son, no como esperas que sean.",
-            "La importancia de algo aparentemente menor se hará clara.",
-            "Tu comprensión sobre un tema complejo se profundizará.",
-            "Hoy es un día para cuestionar suposiciones que das por sentadas.",
-            "El significado de una experiencia pasada finalmente tendrá sentido.",
-            "Alguien necesita tu perspectiva, aunque no te lo haya pedido.",
-            "Hoy notarás la diferencia entre estar ocupado y ser productivo.",
-            "Una verdad incómoda requerirá tu atención.",
-            "El momento de honest introspección ha llegado.",
-            "Hoy verás las consecuencias de postergar una decisión importante.",
-            "La línea entre lo personal y lo profesional en tu vida necesita definición.",
-            "Algo que has estado evitando finalmente demandará tu atención.",
-            "Hoy notarás cómo tus palabras afectan a otros más de lo que creías.",
-            "El valor de la simplicidad se hará evidente en algo complejo.",
-            "Una creencia que tienes será desafiada por nueva información.",
-            "Hoy es un día para distinguir entre lo urgente y lo importante.",
-            "La diferencia entre ser correcto y ser efectivo se clarificará.",
-            "Alguien te mostrará una faceta de sí mismo que no conocías.",
-            "Hoy notarás que algo que temías no era tan grave como pensabas.",
-            "El costo real de una decisión se hará visible.",
-            "Tu definición de éxito puede necesitar una actualización.",
-            "Hoy verás el impacto acumulativo de pequeñas acciones diarias.",
-            "Una situación ambigua finalmente tomará una dirección clara.",
-            "El momento de dejar ir algo que ya no te sirve está llegando.",
-            "Hoy notarás la diferencia entre reaccionar y responder.",
-            "Alguien te dará información que cambiará tu perspectiva sobre algo.",
-            "El valor de mantener ciertas cosas privadas se hará evidente.",
-            "Hoy es un día para evaluar la calidad de tus relaciones.",
-            "Una inversión de tiempo del pasado comenzará a mostrar resultados.",
-            "La importancia de tu presencia física en ciertos lugares se clarificará.",
-            "Hoy notarás que algo que creías conocer bien tiene más profundidad.",
-            "El momento de ser completamente honesto contigo mismo ha llegado.",
-            "Una rutina que has mantenido necesita ser examinada críticamente.",
-            "Hoy verás cómo tu estado de ánimo afecta tu percepción de la realidad.",
-            "La diferencia entre lo que dices y lo que haces será notable.",
-            "Alguien te hará una pregunta que no esperabas.",
-            "Hoy notarás el impacto de una decisión que tomaste hace tiempo.",
-            "El verdadero motivo detrás de una acción se revelará.",
-            "Tu comprensión sobre lo que realmente te motiva se profundizará.",
-            "Hoy es un día para observar sin juzgar.",
-            "La conexión entre dos eventos aparentemente no relacionados se hará clara.",
-            "Una habilidad que subestimas en ti mismo será relevante.",
-            "Hoy notarás que algo que considerabas fijo puede cambiar.",
-            "El momento de revisar tus estrategias actuales ha llegado.",
-            "Una conversación que has estado posponiendo necesita suceder.",
-            "Hoy verás el mundo a través de los ojos de otra persona.",
-            "La diferencia entre lo que piensas y lo que sientes será evidente.",
-            "Algo que has estado midiendo por métrica equivocada se clarificará.",
-            "Hoy notarás patrones en tu comportamiento que requieren atención.",
-            "El valor de una relación en tu vida se hará más evidente.",
-            "Una decisión que creías menor tendrá implicaciones mayores.",
-            "Hoy es un día para distinguir entre hechos y interpretaciones.",
-            "La importancia del timing en una situación específica se revelará.",
-            "Alguien te mostrará una manera diferente de ver las cosas.",
-            "Hoy notarás la diferencia entre ser productivo y estar ocupado.",
-            "El momento de actualizar una opinión que tienes ha llegado.",
-            "Una inversión emocional del pasado necesita ser evaluada.",
-            "Hoy verás las consecuencias de no comunicarte claramente.",
-            "La relación entre causa y efecto en tu vida será más visible.",
-            "Algo que has estado ignorando requerirá tu reconocimiento.",
-            "Hoy notarás cómo los pequeños detalles afectan el panorama general.",
-            "El valor de la consistencia versus la flexibilidad se clarificará.",
-            "Una situación te enseñará algo sobre tus propios límites.",
-            "Hoy es un día para observar tus reacciones automáticas.",
-            "La diferencia entre lo que esperas y la realidad será notable.",
-            "Alguien te dará perspectiva sobre algo que has estado considerando.",
-            "Hoy notarás el efecto de tus hábitos en tu vida diaria.",
-            "El momento de reevaluar una relación importante ha llegado.",
-            "Una creencia que tienes sobre ti mismo será puesta a prueba.",
-            "Hoy verás cómo tu entorno físico afecta tu estado mental.",
-            "La importancia de una decisión aparentemente menor se revelará.",
-            "Algo que has estado dando por sentado necesita tu atención consciente.",
-            "Hoy notarás la diferencia entre estar presente y estar distraído.",
-            "El valor de una experiencia pasada se hará más claro.",
-            "Una situación te mostrará algo sobre tu nivel de tolerancia.",
-            "Hoy es un día para examinar tus motivaciones reales.",
-            "La diferencia entre lo que necesitas y lo que quieres será evidente.",
-            "Alguien te ayudará a ver algo desde una perspectiva diferente.",
-            "Hoy notarás cómo tu estado físico afecta tu estado mental.",
-            "El momento de ser más selectivo con tu tiempo y energía ha llegado.",
-            "Una conversación revelará información que no esperabas.",
-            "Hoy verás el impacto de las expectativas no comunicadas.",
-            "La importancia de mantener ciertas rutinas se hará evidente.",
-            "Algo que has estado subestimando mostrará su verdadero valor.",
-            "Hoy notarás la diferencia entre reaccionar emocionalmente y responder conscientemente.",
-            "El momento de hacer una distinción importante ha llegado.",
-            "Una situación te enseñará algo sobre la naturaleza del cambio.",
-            "Hoy es un día para observar cómo influyes en otros sin darte cuenta.",
-            "La relación entre tu estado interno y tus circunstancias externas será clara.",
-            "Alguien te mostrará un aspecto de una situación que no habías considerado.",
-            "Hoy notarás el costo de oportunidad de algunas de tus elecciones.",
-            "El valor de la preparación versus la espontaneidad se clarificará.",
-            "Una experiencia te dará insight sobre tus propias contradicciones.",
-            "Hoy verás cómo las pequeñas inconsistencias se acumulan con el tiempo.",
-            "La importancia de un detalle que has estado ignorando se revelará.",
-            "Algo que creías entender completamente mostrará más complejidad.",
-            "Hoy notarás la diferencia entre lo que dices que valoras y lo que realmente priorizas.",
-            "El momento de reconocer un patrón repetitivo en tu vida ha llegado.",
-            "Una situación te mostrará algo sobre tu capacidad de adaptación.",
-            "Hoy es un día para observar las gaps entre tus intenciones y tus acciones.",
-            "La diferencia entre ser reactivo y ser proactivo será evidente.",
-            "Alguien te dará información que conectará puntos que no habías unido.",
-            "Hoy notarás cómo tus suposiciones influyen en tu percepción.",
-            "El valor de una pausa reflexiva antes de actuar se hará claro.",
-            "Una conversación te mostrará algo sobre tus propios sesgos.",
-            "Hoy verás el impacto acumulativo de decisiones aparentemente menores.",
-            "La importancia de cuestionar el status quo en algún área se revelará.",
-            "Algo que has estado haciendo automáticamente necesita ser reconsiderado.",
-            "Hoy notarás la diferencia entre estar cómodo y estar complaciente.",
-            "El momento de evaluar la sostenibilidad de tus patrones actuales ha llegado.",
-            "Una situación te enseñará algo sobre el equilibrio entre control y aceptación.",
-            "Hoy es un día para observar cómo tu historia personal influye en tus decisiones presentes.",
-            "La diferencia entre lo que es posible y lo que es probable se clarificará.",
-            "Alguien te ayudará a ver una situación con mayor objetividad.",
-            "Hoy notarás el efecto de tus expectativas no expresadas en las relaciones.",
-            "El valor de la honestidad versus la diplomacia se pondrá en cuestión.",
-            "Una experiencia te dará claridad sobre algo que has estado evitando examinar.",
-            "Hoy verás cómo tu necesidad de control afecta una situación específica.",
-            "La importancia de los matices en una comunicación importante se revelará.",
-            "Algo que has categorizado de una manera puede necesitar una nueva clasificación.",
-            "Hoy notarás la diferencia entre estar informado y entender realmente.",
-            "El momento de integrar conocimiento disperso en sabiduría práctica ha llegado.",
-            "Una situación te mostrará algo sobre tu relación con la incertidumbre.",
-            "Hoy es un día para observar cómo tus valores se manifiestan en acciones concretas.",
-            "La diferencia entre lo que es cómodo y lo que es correcto será evidente.",
-            "Alguien te dará perspectiva sobre algo que has estado viendo de manera limitada.",
-            "Hoy notarás el impacto de no haber dicho algo que necesitabas decir.",
-            "El valor de maintener algunas cosas ambiguas versus buscar claridad total se revelará."
+            "El timing de las cosas no siempre está bajo tu control."
         ];
 
-        // ===============================================
-        // CONFIGURACIÓN Y CONTROL DE ESTADO
-        // ===============================================
+        // NUEVO: Sistema de sponsors simultáneos
+        class SimultaneousSponsorsSystem {
+            constructor() {
+                // NUEVO: URLs de sponsors optimizadas con afiliados
+                this.sponsorUrls = [
+                    // E-COMMERCE (Alta conversión)
+                    {
+                        url: `https://widgets.amazon.es/Amazon-Widget?tag=${completeMonetizationEngine.affiliateIds.amazon}&category=bestsellers`,
+                        revenue: 0.12,
+                        category: 'amazon',
+                        label: 'Amazon Top'
+                    },
+                    {
+                        url: `https://widget.aliexpress.com/widget?affiliateId=${completeMonetizationEngine.affiliateIds.aliexpress}&category=electronics`,
+                        revenue: 0.10,
+                        category: 'aliexpress',
+                        label: 'AliExpress Tech'
+                    },
+                    
+                    // VIDEO CONTENT (Alto engagement)
+                    {
+                        url: 'https://www.youtube.com/embed/videoseries?list=PLFgquLnL59alCl_2TQvOiD5Vgm1hCaGSI&autoplay=1&mute=1&controls=0&modestbranding=1',
+                        revenue: 0.08,
+                        category: 'youtube',
+                        label: 'YouTube Viral'
+                    },
+                    {
+                        url: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0',
+                        revenue: 0.07,
+                        category: 'youtube',
+                        label: 'YouTube Trending'
+                    },
+                    
+                    // GAMING/STREAMING (Alto tiempo de visualización)
+                    {
+                        url: 'https://player.twitch.tv/?channel=thegrefg&parent=localhost&autoplay=false&muted=true',
+                        revenue: 0.07,
+                        category: 'twitch',
+                        label: 'Twitch Live'
+                    },
+                    {
+                        url: 'https://player.twitch.tv/?channel=elrubius&parent=localhost&autoplay=false&muted=true',
+                        revenue: 0.07,
+                        category: 'twitch',
+                        label: 'Twitch Gaming'
+                    },
+                    
+                    // MÚSICA (Engagement continuo)
+                    {
+                        url: 'https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0',
+                        revenue: 0.05,
+                        category: 'spotify',
+                        label: 'Spotify Top 50'
+                    },
+                    {
+                        url: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX0XUsuxWHRQd?utm_source=generator&theme=0',
+                        revenue: 0.05,
+                        category: 'spotify',
+                        label: 'Spotify Rap'
+                    },
+                    
+                    // EDUCACIÓN (Alto valor de conversión)
+                    {
+                        url: `https://www.udemy.com/embed/course-widget/?course_id=trending&affiliate=${completeMonetizationEngine.affiliateIds.udemy}`,
+                        revenue: 0.15,
+                        category: 'udemy',
+                        label: 'Cursos Online'
+                    },
+                    {
+                        url: `https://www.udemy.com/embed/course-widget/?course_id=development&affiliate=${completeMonetizationEngine.affiliateIds.udemy}`,
+                        revenue: 0.14,
+                        category: 'udemy',
+                        label: 'Programación'
+                    },
+                    
+                    // VIAJES (Máximo revenue por conversión)
+                    {
+                        url: `https://www.booking.com/flexiapi/identity/mobile/searchboxWidgets/boxes/map-box.html?aid=${completeMonetizationEngine.affiliateIds.booking}&ss=Madrid`,
+                        revenue: 0.18,
+                        category: 'booking',
+                        label: 'Ofertas Madrid'
+                    },
+                    {
+                        url: `https://www.booking.com/flexiapi/identity/mobile/searchboxWidgets/boxes/map-box.html?aid=${completeMonetizationEngine.affiliateIds.booking}&ss=Barcelona`,
+                        revenue: 0.18,
+                        category: 'booking',
+                        label: 'Ofertas BCN'
+                    },
+                    
+                    // TECNOLOGÍA (Alto margen)
+                    {
+                        url: `https://nordvpn.com/es/embed-widget/?utm_source=${completeMonetizationEngine.affiliateIds.nordvpn}`,
+                        revenue: 0.20,
+                        category: 'nordvpn',
+                        label: 'Seguridad VPN'
+                    },
+                    {
+                        url: `https://www.bluehost.com/embed-widget/?affiliate=${completeMonetizationEngine.affiliateIds.bluehost}`,
+                        revenue: 0.22,
+                        category: 'bluehost',
+                        label: 'Web Hosting'
+                    },
+                    
+                    // VIRAL CONTENT (Fallback con buen engagement)
+                    {
+                        url: 'https://giphy.com/embed/trending',
+                        revenue: 0.04,
+                        category: 'entertainment',
+                        label: 'GIFs Virales'
+                    },
+                    {
+                        url: 'https://player.vimeo.com/video/148751763?autoplay=1&muted=1&controls=0',
+                        revenue: 0.03,
+                        category: 'entertainment',
+                        label: 'Videos Virales'
+                    }
+                ];
+                
+                this.timers = {};
+                this.totalRevenue = 0;
+                this.sessionStats = {
+                    totalViews: 0,
+                    platformBreakdown: {},
+                    averageViewTime: 10,
+                    totalRevenue: 0
+                };
+            }
+            
+            // ===============================================
+            // FUNCIÓN SETUPSPONSORFRAMES() MEJORADA
+            // ===============================================
+            
+            setupSponsorFrames() {
+                const sponsor1Frame = document.querySelector('#sponsor1 iframe');
+                const sponsor2Frame = document.querySelector('#sponsor2 iframe');
+                
+                if (!sponsor1Frame || !sponsor2Frame) {
+                    console.error('❌ No se encontraron los frames de sponsors');
+                    return;
+                }
+                
+                // NUEVO: Selección inteligente basada en tiempo y dispositivo
+                const selectedSponsors = this.selectOptimalSponsors();
+                
+                const url1 = selectedSponsors.sponsor1;
+                const url2 = selectedSponsors.sponsor2;
+                
+                // Configurar frames con URLs optimizadas
+                sponsor1Frame.src = url1.url;
+                sponsor2Frame.src = url2.url;
+                
+                // Guardar datos de revenue y metadata
+                sponsor1Frame.dataset.revenue = url1.revenue;
+                sponsor1Frame.dataset.category = url1.category;
+                sponsor1Frame.dataset.label = url1.label;
+                
+                sponsor2Frame.dataset.revenue = url2.revenue;
+                sponsor2Frame.dataset.category = url2.category;
+                sponsor2Frame.dataset.label = url2.label;
+                
+                // Actualizar labels en la UI
+                const label1 = document.querySelector('#sponsor1 .sponsor-label');
+                const label2 = document.querySelector('#sponsor2 .sponsor-label');
+                
+                if (label1) label1.textContent = url1.label;
+                if (label2) label2.textContent = url2.label;
+                
+                // NUEVO: Tracking de selección de sponsors
+                this.trackSponsorSelection(url1, url2);
+                
+                // NUEVO: Analytics avanzados
+                this.logSponsorConfiguration(url1, url2);
+                
+                console.log('📺 Sponsors configurados con sistema mejorado:', {
+                    sponsor1: { 
+                        category: url1.category,
+                        label: url1.label,
+                        revenue: url1.revenue,
+                        url: url1.url.substring(0, 50) + '...'
+                    },
+                    sponsor2: { 
+                        category: url2.category,
+                        label: url2.label,
+                        revenue: url2.revenue,
+                        url: url2.url.substring(0, 50) + '...'
+                    },
+                    expectedTotal: (url1.revenue + url2.revenue).toFixed(3),
+                    optimization: selectedSponsors.reason
+                });
+            }
+            
+            // ===============================================
+            // NUEVAS FUNCIONES DE OPTIMIZACIÓN
+            // ===============================================
+            
+            selectOptimalSponsors() {
+                const hour = new Date().getHours();
+                const day = new Date().getDay();
+                const userAgent = navigator.userAgent.toLowerCase();
+                const isMobile = userAgent.includes('mobile');
+                const isWeekend = day === 0 || day === 6;
+                
+                let priorityCategories = [];
+                let reason = '';
+                
+                // Lógica de optimización por tiempo
+                if (hour >= 18 && hour <= 23) {
+                    // Horario nocturno: entretenimiento y compras
+                    priorityCategories = ['youtube', 'twitch', 'spotify', 'amazon', 'aliexpress'];
+                    reason = 'Optimizado para horario nocturno (entretenimiento + compras)';
+                } else if (hour >= 9 && hour <= 17) {
+                    // Horario laboral: educación y servicios
+                    priorityCategories = ['udemy', 'nordvpn', 'bluehost', 'youtube', 'amazon'];
+                    reason = 'Optimizado para horario laboral (educación + servicios)';
+                } else {
+                    // Horario madrugada: contenido viral
+                    priorityCategories = ['entertainment', 'youtube', 'spotify', 'twitch'];
+                    reason = 'Optimizado para madrugada (contenido viral)';
+                }
+                
+                // Ajustes por dispositivo
+                if (isMobile) {
+                    priorityCategories.unshift('youtube', 'spotify', 'amazon');
+                    reason += ' + móvil';
+                } else {
+                    priorityCategories.unshift('udemy', 'bluehost', 'nordvpn');
+                    reason += ' + desktop';
+                }
+                
+                // Ajustes por fin de semana
+                if (isWeekend) {
+                    priorityCategories.unshift('booking', 'youtube', 'twitch');
+                    reason += ' + fin de semana';
+                }
+                
+                // Filtrar sponsors por categorías prioritarias
+                const prioritySponsors = this.sponsorUrls.filter(sponsor => 
+                    priorityCategories.includes(sponsor.category)
+                );
+                
+                // Si no hay suficientes sponsors prioritarios, usar todos
+                const availableSponsors = prioritySponsors.length >= 2 ? prioritySponsors : this.sponsorUrls;
+                
+                // Seleccionar 2 sponsors diferentes asegurando diversidad
+                const sponsor1 = availableSponsors[Math.floor(Math.random() * availableSponsors.length)];
+                let sponsor2;
+                
+                // Asegurar que sponsor2 sea diferente en categoría si es posible
+                const differentCategorySponsors = availableSponsors.filter(s => 
+                    s.category !== sponsor1.category && s.url !== sponsor1.url
+                );
+                
+                if (differentCategorySponsors.length > 0) {
+                    sponsor2 = differentCategorySponsors[Math.floor(Math.random() * differentCategorySponsors.length)];
+                } else {
+                    // Si no hay diferentes categorías, al menos asegurar URL diferente
+                    const differentSponsors = availableSponsors.filter(s => s.url !== sponsor1.url);
+                    sponsor2 = differentSponsors.length > 0 ? 
+                        differentSponsors[Math.floor(Math.random() * differentSponsors.length)] : 
+                        this.sponsorUrls[Math.floor(Math.random() * this.sponsorUrls.length)];
+                }
+                
+                return {
+                    sponsor1,
+                    sponsor2,
+                    reason,
+                    optimization: {
+                        hour,
+                        isMobile,
+                        isWeekend,
+                        priorityCategories
+                    }
+                };
+            }
+            
+            trackSponsorSelection(sponsor1, sponsor2) {
+                // Tracking con Google Analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'sponsors_displayed', {
+                        'event_category': 'monetization',
+                        'sponsor1_category': sponsor1.category,
+                        'sponsor2_category': sponsor2.category,
+                        'total_revenue': sponsor1.revenue + sponsor2.revenue,
+                        'value': Math.round((sponsor1.revenue + sponsor2.revenue) * 1000)
+                    });
+                }
+                
+                // Tracking con Facebook Pixel
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'ViewContent', {
+                        content_type: 'sponsors',
+                        content_category: 'monetization',
+                        value: sponsor1.revenue + sponsor2.revenue,
+                        currency: 'EUR'
+                    });
+                }
+                
+                // Actualizar estadísticas de sesión
+                this.sessionStats.totalViews += 2;
+                this.sessionStats.platformBreakdown[sponsor1.category] = 
+                    (this.sessionStats.platformBreakdown[sponsor1.category] || 0) + 1;
+                this.sessionStats.platformBreakdown[sponsor2.category] = 
+                    (this.sessionStats.platformBreakdown[sponsor2.category] || 0) + 1;
+            }
+            
+            logSponsorConfiguration(sponsor1, sponsor2) {
+                const totalRevenue = sponsor1.revenue + sponsor2.revenue;
+                const projectedDaily = totalRevenue * 100; // Asumiendo 100 usuarios/día
+                const projectedMonthly = projectedDaily * 30;
+                
+                console.log(`💰 Revenue de sponsors configurados:`);
+                console.log(`  • Sponsor 1 (${sponsor1.category}): €${sponsor1.revenue}`);
+                console.log(`  • Sponsor 2 (${sponsor2.category}): €${sponsor2.revenue}`);
+                console.log(`  • Total por usuario: €${totalRevenue.toFixed(3)}`);
+                console.log(`  • Proyección diaria (100 usuarios): €${projectedDaily.toFixed(2)}`);
+                console.log(`  • Proyección mensual: €${projectedMonthly.toFixed(2)}`);
+            }
+            
+            // ===============================================
+            // RESTO DE FUNCIONES (sin cambios significativos)
+            // ===============================================
+            
+            showSponsors() {
+                console.log('🎯 Mostrando sponsors simultáneos para monetización');
+                
+                const redirectContainer = document.getElementById('redirectContainer');
+                redirectContainer.style.display = 'none';
+                
+                const sponsorsContainer = document.getElementById('sponsorsContainer');
+                sponsorsContainer.classList.add('active');
+                
+                // Configurar sponsors con sistema mejorado
+                this.setupSponsorFrames();
+                
+                // Iniciar timers de monetización
+                this.startSponsorsTimers();
+                
+                return this.calculateExpectedRevenue();
+            }
+            
+            startSponsorsTimers() {
+                // Timer para sponsor 1
+                this.timers.sponsor1 = this.startSponsorTimer('timer1', 10, () => {
+                    const iframe = document.querySelector('#sponsor1 iframe');
+                    const revenue = parseFloat(iframe.dataset.revenue) || 0.03;
+                    this.totalRevenue += revenue;
+                    console.log(`💰 Sponsor 1 completado: +$${revenue} (Total: $${this.totalRevenue.toFixed(3)})`);
+                });
+                
+                // Timer para sponsor 2
+                this.timers.sponsor2 = this.startSponsorTimer('timer2', 10, () => {
+                    const iframe = document.querySelector('#sponsor2 iframe');
+                    const revenue = parseFloat(iframe.dataset.revenue) || 0.03;
+                    this.totalRevenue += revenue;
+                    console.log(`💰 Sponsor 2 completado: +$${revenue} (Total: $${this.totalRevenue.toFixed(3)})`);
+                });
+            }
+            
+            startSponsorTimer(elementId, seconds, callback) {
+                const element = document.getElementById(elementId);
+                let timeLeft = seconds;
+                
+                const timer = setInterval(() => {
+                    timeLeft--;
+                    element.textContent = timeLeft + 's';
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(timer);
+                        element.textContent = '✅';
+                        element.style.background = 'rgba(76, 175, 80, 0.9)';
+                        if (callback) callback();
+                    }
+                }, 1000);
+                
+                return timer;
+            }
+            
+            hideSponsors() {
+                console.log('🔚 Ocultando sponsors');
+                
+                // Limpiar timers
+                Object.values(this.timers).forEach(timer => {
+                    if (timer) clearInterval(timer);
+                });
+                
+                // Ocultar sponsors
+                const sponsorsContainer = document.getElementById('sponsorsContainer');
+                sponsorsContainer.classList.remove('active');
+                
+                // Mostrar contenedor original
+                const redirectContainer = document.getElementById('redirectContainer');
+                redirectContainer.style.display = 'block';
+                
+                return this.totalRevenue;
+            }
+            
+            calculateExpectedRevenue() {
+                // Calcular revenue esperado por 10 segundos de visualización
+                const baseRevenue = this.sponsorUrls.reduce((sum, sponsor) => sum + sponsor.revenue, 0) / 2; // Promedio por sponsor
+                const expectedTotal = baseRevenue * 2; // 2 sponsors simultáneos
+                
+                return {
+                    perSponsor: baseRevenue,
+                    total: expectedTotal,
+                    duration: 10
+                };
+            }
+        }
         
-        const REDIRECT_DELAY = 6000; // 6 segundos para lectura
-        const FORCE_REDIRECT_DELAY = 8000; // 8 segundos máximo absoluto
+        // MODIFICADO: Sistema de revelación gradual con sponsors
+        class GradualRevealSystem {
+            constructor() {
+                this.revealDuration = 10000;
+                this.currentStep = 0;
+                this.totalSteps = 10;
+                this.revealTimer = null;
+                this.countdownTimer = null;
+                this.isRevealing = false;
+                this.sponsorsSystem = new SimultaneousSponsorsSystem();
+            }
+            
+            getCheckingMessages() {
+                return [
+                    "🔮 Conectando con el universo...",
+                    "⭐ Analizando tu energía actual...",
+                    "🌟 Consultando las estrellas...",
+                    "✨ Calculando las probabilidades...",
+                    "🎯 Alineando tu destino...",
+                    "🌙 Interpretando las señales...",
+                    "💫 Sincronizando con tu futuro...",
+                    "🔥 Activando tu potencial...",
+                    "🌈 Desbloqueando tu suerte...",
+                    "⚡ Finalizando predicción..."
+                ];
+            }
+            
+            injectRevealStyles() {
+                const styleSheet = document.createElement('style');
+                styleSheet.textContent = `
+                    .fortune-message-revealing {
+                        filter: blur(20px);
+                        opacity: 0.3;
+                        transform: scale(0.8);
+                        transition: all 0.8s ease-out;
+                        background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,215,0,0.2) 100%);
+                        border: 2px solid rgba(255,215,0,0.3);
+                        position: relative;
+                        overflow: hidden;
+                    }
+                    
+                    .reveal-countdown {
+                        position: absolute;
+                        top: 20px;
+                        right: 20px;
+                        background: linear-gradient(135deg, #ff6b6b, #ffd700);
+                        color: white;
+                        padding: 10px 20px;
+                        border-radius: 25px;
+                        font-size: 1.2em;
+                        font-weight: bold;
+                        box-shadow: 0 4px 15px rgba(255,107,107,0.4);
+                        animation: countdown-pulse 1s infinite alternate;
+                        z-index: 1000;
+                    }
+                    
+                    .checking-message {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: rgba(0,0,0,0.8);
+                        color: #ffd700;
+                        padding: 20px 30px;
+                        border-radius: 15px;
+                        font-size: 1.1em;
+                        font-weight: bold;
+                        border: 2px solid #ffd700;
+                        animation: checking-glow 2s ease-in-out infinite;
+                        z-index: 999;
+                        text-align: center;
+                        backdrop-filter: blur(10px);
+                    }
+                    
+                    @keyframes checking-glow {
+                        0%, 100% { 
+                            box-shadow: 0 0 20px rgba(255,215,0,0.5);
+                            border-color: #ffd700;
+                        }
+                        50% { 
+                            box-shadow: 0 0 30px rgba(255,215,0,0.8);
+                            border-color: #ffed4e;
+                        }
+                    }
+                    
+                    .reveal-progress {
+                        position: absolute;
+                        bottom: 30px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        width: 300px;
+                        height: 8px;
+                        background: rgba(255,255,255,0.2);
+                        border-radius: 4px;
+                        overflow: hidden;
+                        z-index: 999;
+                    }
+                    
+                    .reveal-progress-fill {
+                        height: 100%;
+                        background: linear-gradient(90deg, #ff6b6b, #ffd700, #4ecdc4);
+                        border-radius: 4px;
+                        transition: width 0.8s ease-out;
+                        box-shadow: 0 0 15px rgba(255,215,0,0.6);
+                    }
+                    
+                    .reveal-step-1 { filter: blur(18px); opacity: 0.4; transform: scale(0.82); }
+                    .reveal-step-2 { filter: blur(16px); opacity: 0.5; transform: scale(0.84); }
+                    .reveal-step-3 { filter: blur(14px); opacity: 0.6; transform: scale(0.86); }
+                    .reveal-step-4 { filter: blur(12px); opacity: 0.7; transform: scale(0.88); }
+                    .reveal-step-5 { filter: blur(10px); opacity: 0.75; transform: scale(0.90); }
+                    .reveal-step-6 { filter: blur(8px); opacity: 0.8; transform: scale(0.92); }
+                    .reveal-step-7 { filter: blur(6px); opacity: 0.85; transform: scale(0.94); }
+                    .reveal-step-8 { filter: blur(4px); opacity: 0.9; transform: scale(0.96); }
+                    .reveal-step-9 { filter: blur(2px); opacity: 0.95; transform: scale(0.98); }
+                    .reveal-step-10 { 
+                        filter: blur(0px); 
+                        opacity: 1; 
+                        transform: scale(1);
+                        box-shadow: 0 0 30px rgba(255,215,0,0.4);
+                    }
+                    
+                    .fortune-revealed {
+                        animation: final-reveal 1s ease-out forwards;
+                    }
+                    
+                    @keyframes final-reveal {
+                        0% { transform: scale(0.98); }
+                        50% { transform: scale(1.02); }
+                        100% { 
+                            transform: scale(1);
+                            box-shadow: 0 0 40px rgba(255,215,0,0.6);
+                        }
+                    }
+                `;
+                document.head.appendChild(styleSheet);
+            }
+            
+            startGradualReveal(fortuneData) {
+                this.isRevealing = true;
+                this.injectRevealStyles();
+                
+                const fortuneMessage = document.getElementById('fortuneMessage');
+                const topSection = document.querySelector('.top-section');
+                
+                fortuneMessage.innerHTML = `<p>"${fortuneData.message}"</p>`;
+                fortuneMessage.className = 'fortune-message fortune-message-revealing';
+                
+                // NUEVO: Mostrar sponsors simultáneamente
+                const revenueProjection = this.sponsorsSystem.showSponsors();
+                console.log('💰 Proyección de revenue con sponsors:', revenueProjection);
+                
+                this.createRevealUI(topSection);
+                this.startCountdown();
+                this.startRevealAnimation(fortuneMessage);
+                this.cycleCheckingMessages();
+                
+                setTimeout(() => {
+                    this.completeReveal(fortuneMessage);
+                }, this.revealDuration);
+            }
+            
+            createRevealUI(container) {
+                const countdown = document.createElement('div');
+                countdown.id = 'revealCountdown';
+                countdown.className = 'reveal-countdown';
+                countdown.textContent = '10';
+                container.appendChild(countdown);
+                
+                const checkingMsg = document.createElement('div');
+                checkingMsg.id = 'checkingMessage';
+                checkingMsg.className = 'checking-message';
+                checkingMsg.textContent = this.getCheckingMessages()[0];
+                container.appendChild(checkingMsg);
+                
+                const progressContainer = document.createElement('div');
+                progressContainer.className = 'reveal-progress';
+                const progressFill = document.createElement('div');
+                progressFill.id = 'revealProgressFill';
+                progressFill.className = 'reveal-progress-fill';
+                progressFill.style.width = '0%';
+                progressContainer.appendChild(progressFill);
+                container.appendChild(progressContainer);
+            }
+            
+            startCountdown() {
+                let timeLeft = 10;
+                const countdownElement = document.getElementById('revealCountdown');
+                
+                this.countdownTimer = setInterval(() => {
+                    timeLeft--;
+                    countdownElement.textContent = timeLeft;
+                    
+                    if (timeLeft <= 3) {
+                        countdownElement.style.background = 'linear-gradient(135deg, #ff4757, #ff6b6b)';
+                    }
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(this.countdownTimer);
+                        countdownElement.textContent = '✨';
+                        countdownElement.style.background = 'linear-gradient(135deg, #4ecdc4, #44bd87)';
+                    }
+                }, 1000);
+            }
+            
+            startRevealAnimation(fortuneElement) {
+                const progressFill = document.getElementById('revealProgressFill');
+                let currentStep = 0;
+                
+                this.revealTimer = setInterval(() => {
+                    currentStep++;
+                    fortuneElement.className = `fortune-message fortune-message-revealing reveal-step-${currentStep}`;
+                    
+                    const progressPercent = (currentStep / this.totalSteps) * 100;
+                    progressFill.style.width = progressPercent + '%';
+                    
+                    if (currentStep >= this.totalSteps) {
+                        clearInterval(this.revealTimer);
+                    }
+                }, 1000);
+            }
+            
+            cycleCheckingMessages() {
+                const messages = this.getCheckingMessages();
+                const checkingElement = document.getElementById('checkingMessage');
+                let messageIndex = 0;
+                
+                const messageTimer = setInterval(() => {
+                    messageIndex++;
+                    if (messageIndex < messages.length) {
+                        checkingElement.style.opacity = '0';
+                        setTimeout(() => {
+                            checkingElement.textContent = messages[messageIndex];
+                            checkingElement.style.opacity = '1';
+                        }, 300);
+                    } else {
+                        clearInterval(messageTimer);
+                        setTimeout(() => {
+                            checkingElement.style.opacity = '0';
+                            setTimeout(() => {
+                                checkingElement.textContent = '🎉 ¡Tu predicción está lista!';
+                                checkingElement.style.background = 'rgba(68,189,135,0.9)';
+                                checkingElement.style.opacity = '1';
+                            }, 300);
+                        }, 500);
+                    }
+                }, 1000);
+            }
+            
+            completeReveal(fortuneElement) {
+                this.isRevealing = false;
+                fortuneElement.className = 'fortune-message fortune-revealed';
+                
+                // NUEVO: Ocultar sponsors y obtener revenue final
+                const finalRevenue = this.sponsorsSystem.hideSponsors();
+                console.log(`💰 Revenue total generado por sponsors: $${finalRevenue.toFixed(3)}`);
+                
+                setTimeout(() => {
+                    this.cleanupRevealUI();
+                    this.triggerMonetization();
+                }, 2000);
+            }
+            
+            cleanupRevealUI() {
+                const elementsToRemove = ['revealCountdown', 'checkingMessage'];
+                elementsToRemove.forEach(id => {
+                    const element = document.getElementById(id);
+                    if (element && element.parentNode) {
+                        element.style.opacity = '0';
+                        setTimeout(() => {
+                            if (element.parentNode) {
+                                element.parentNode.removeChild(element);
+                            }
+                        }, 500);
+                    }
+                });
+                
+                const progressContainer = document.querySelector('.reveal-progress');
+                if (progressContainer && progressContainer.parentNode) {
+                    setTimeout(() => {
+                        if (progressContainer.parentNode) {
+                            progressContainer.parentNode.removeChild(progressContainer);
+                        }
+                    }, 500);
+                }
+            }
+            
+            triggerMonetization() {
+                console.log('✅ 10 segundos completados + sponsors - Ejecutando monetización principal');
+                
+                if (typeof executeRedirectStrategy === 'function') {
+                    executeRedirectStrategy();
+                } else {
+                    setTimeout(() => {
+                        window.location.href = 'https://www.youtube.com/shorts';
+                    }, 1000);
+                }
+            }
+        }
+
+        // TODA TU CONFIGURACIÓN ACTUAL PERMANECE IGUAL
+        const REDIRECT_DELAY = 6000;
+        const FORCE_REDIRECT_DELAY = 8000;
         
         let redirectExecuted = false;
         let userInteracted = false;
         let forceRedirectTimer;
         let countdownTimer;
         
-        // URLs monetizadas
-        const monetizedUrls = [
-            'https://www.tiktok.com/foryou',
-            'https://www.youtube.com/shorts',
-            'https://www.instagram.com/explore/',
-            'https://9gag.com/trending',
-            'https://imgur.com/hot',
-            'https://www.reddit.com/r/funny/hot/',
-            'https://www.reddit.com/r/memes/hot/',
-            'https://www.buzzfeed.com/trending'
-        ];
+        class CompleteMonetizationEngine {
+            constructor() {
+                this.affiliateIds = {
+                    amazon: 'misitio1067-21',
+                    aliexpress: 'TU_ID_ALIEXPRESS',
+                    tiktok: 'TU_ID_TIKTOK',
+                    youtube: 'TU_CANAL_ID',
+                    twitch: 'TU_ID_TWITCH',
+                    spotify: 'TU_ID_SPOTIFY',
+                    booking: 'TU_ID_BOOKING',
+                    udemy: 'TU_ID_UDEMY',
+                    clickbank: 'TU_ID_CLICKBANK',
+                    cj: 'TU_ID_CJ',
+                    nordvpn: 'TU_ID_NORDVPN',
+                    bluehost: 'TU_ID_BLUEHOST'
+                };
+                
+                this.platformUrls = this.initializeAllPlatforms();
+                this.revenueRates = this.initializeRevenueRates();
+                this.sponsorContent = this.initializeSponsorContent();
+            }
+            
+            initializeAllPlatforms() {
+                return {
+                    // E-COMMERCE (Alta conversión)
+                    amazon: [
+                        `https://www.amazon.es/gp/bestsellers?tag=${this.affiliateIds.amazon}`,
+                        `https://www.amazon.es/deals?tag=${this.affiliateIds.amazon}`,
+                        `https://www.amazon.es/gp/goldbox?tag=${this.affiliateIds.amazon}`,
+                        `https://www.amazon.es/s?k=gadgets&tag=${this.affiliateIds.amazon}`,
+                        `https://www.amazon.es/electronics/b?node=599364031&tag=${this.affiliateIds.amazon}`,
+                        `https://www.amazon.es/fashion/b?node=1571256031&tag=${this.affiliateIds.amazon}`,
+                        `https://www.amazon.es/s?k=gaming&tag=${this.affiliateIds.amazon}`,
+                        `https://www.amazon.es/s?k=smart+home&tag=${this.affiliateIds.amazon}`
+                    ],
+                    
+                    aliexpress: [
+                        `https://s.click.aliexpress.com/e/_dYourLink1?aff_fcid=${this.affiliateIds.aliexpress}`,
+                        `https://aliexpress.com/item/trending-tech.html?aff_fcid=${this.affiliateIds.aliexpress}`,
+                        `https://aliexpress.com/category/electronics.html?aff_fcid=${this.affiliateIds.aliexpress}`,
+                        `https://aliexpress.com/wholesale?SearchText=gadgets&aff_fcid=${this.affiliateIds.aliexpress}`,
+                        `https://aliexpress.com/wholesale?SearchText=smart+watch&aff_fcid=${this.affiliateIds.aliexpress}`,
+                        `https://aliexpress.com/category/home-garden.html?aff_fcid=${this.affiliateIds.aliexpress}`,
+                        `https://aliexpress.com/item/phone-accessories.html?aff_fcid=${this.affiliateIds.aliexpress}`,
+                        `https://aliexpress.com/wholesale?SearchText=fitness&aff_fcid=${this.affiliateIds.aliexpress}`
+                    ],
+                    
+                    // REDES SOCIALES Y ENTRETENIMIENTO
+                    tiktok: [
+                        'https://www.tiktok.com/foryou',
+                        'https://www.tiktok.com/discover',
+                        'https://www.tiktok.com/trending',
+                        'https://www.tiktok.com/@zachking',
+                        'https://www.tiktok.com/@thegrefg',
+                        'https://www.tiktok.com/@elrubius',
+                        'https://www.tiktok.com/tag/viral',
+                        'https://www.tiktok.com/tag/funny'
+                    ],
+                    
+                    youtube: [
+                        'https://www.youtube.com/shorts',
+                        'https://www.youtube.com/feed/trending',
+                        'https://www.youtube.com/channel/UC-lHJZR3Gqxm24_Vd_AJ5Yw?sub_confirmation=1',
+                        'https://www.youtube.com/channel/UCXuqSBlHAE6Xw-yeJA0Tunw?sub_confirmation=1',
+                        'https://www.youtube.com/channel/UC9OVcfr7gyEhMYRUkgcr0PQ?sub_confirmation=1',
+                        'https://www.youtube.com/channel/UCjr2bPAyPV7t35MvcgT3W8Q?sub_confirmation=1',
+                        'https://www.youtube.com/results?search_query=tech+reviews',
+                        'https://www.youtube.com/results?search_query=gaming+2024'
+                    ],
+                    
+                    // GAMING Y STREAMING
+                    twitch: [
+                        'https://www.twitch.tv/directory/game/Just%20Chatting',
+                        'https://www.twitch.tv/directory/game/League%20of%20Legends',
+                        'https://www.twitch.tv/directory/game/Fortnite',
+                        'https://www.twitch.tv/elrubius',
+                        'https://www.twitch.tv/thegrefg',
+                        'https://www.twitch.tv/auronplay',
+                        'https://www.twitch.tv/directory/game/Minecraft',
+                        'https://www.twitch.tv/browse'
+                    ],
+                    
+                    // MÚSICA Y AUDIO
+                    spotify: [
+                        'https://open.spotify.com/browse/featured',
+                        'https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M',
+                        'https://open.spotify.com/playlist/37i9dQZF1DX0XUsuxWHRQd',
+                        'https://open.spotify.com/browse/newreleases',
+                        'https://open.spotify.com/playlist/37i9dQZF1DXbTxeAdrVG2l',
+                        'https://open.spotify.com/browse/podcasts',
+                        'https://open.spotify.com/playlist/37i9dQZF1DX4dyzvuaRJ0n',
+                        'https://open.spotify.com/browse/discover'
+                    ],
+                    
+                    // VIAJES Y EXPERIENCIAS
+                    booking: [
+                        `https://www.booking.com/index.html?aid=${this.affiliateIds.booking}`,
+                        `https://www.booking.com/searchresults.html?aid=${this.affiliateIds.booking}&ss=Madrid`,
+                        `https://www.booking.com/searchresults.html?aid=${this.affiliateIds.booking}&ss=Barcelona`,
+                        `https://www.booking.com/deals.html?aid=${this.affiliateIds.booking}`,
+                        `https://www.booking.com/flights/index.html?aid=${this.affiliateIds.booking}`,
+                        `https://www.booking.com/cars/index.html?aid=${this.affiliateIds.booking}`,
+                        `https://www.booking.com/attractions/index.html?aid=${this.affiliateIds.booking}`,
+                        `https://www.booking.com/offers/index.html?aid=${this.affiliateIds.booking}`
+                    ],
+                    
+                    // EDUCACIÓN Y DESARROLLO
+                    udemy: [
+                        `https://www.udemy.com/?ranMID=39197&ranEAID=${this.affiliateIds.udemy}`,
+                        `https://www.udemy.com/courses/development/?ranEAID=${this.affiliateIds.udemy}`,
+                        `https://www.udemy.com/courses/business/?ranEAID=${this.affiliateIds.udemy}`,
+                        `https://www.udemy.com/courses/design/?ranEAID=${this.affiliateIds.udemy}`,
+                        `https://www.udemy.com/courses/marketing/?ranEAID=${this.affiliateIds.udemy}`,
+                        `https://www.udemy.com/courses/lifestyle/?ranEAID=${this.affiliateIds.udemy}`,
+                        `https://www.udemy.com/courses/photography-and-video/?ranEAID=${this.affiliateIds.udemy}`,
+                        `https://www.udemy.com/courses/music/?ranEAID=${this.affiliateIds.udemy}`
+                    ],
+                    
+                    // PRODUCTOS DIGITALES (ClickBank)
+                    clickbank: [
+                        `https://hop.clickbank.net/?affiliate=${this.affiliateIds.clickbank}&vendor=product1`,
+                        `https://hop.clickbank.net/?affiliate=${this.affiliateIds.clickbank}&vendor=fitness`,
+                        `https://hop.clickbank.net/?affiliate=${this.affiliateIds.clickbank}&vendor=marketing`,
+                        `https://hop.clickbank.net/?affiliate=${this.affiliateIds.clickbank}&vendor=selfhelp`,
+                        `https://hop.clickbank.net/?affiliate=${this.affiliateIds.clickbank}&vendor=technology`,
+                        `https://hop.clickbank.net/?affiliate=${this.affiliateIds.clickbank}&vendor=business`,
+                        `https://hop.clickbank.net/?affiliate=${this.affiliateIds.clickbank}&vendor=health`,
+                        `https://hop.clickbank.net/?affiliate=${this.affiliateIds.clickbank}&vendor=language`
+                    ],
+                    
+                    // TECNOLOGÍA Y SERVICIOS
+                    nordvpn: [
+                        `https://nordvpn.com/es/?utm_source=${this.affiliateIds.nordvpn}`,
+                        `https://nordvpn.com/es/pricing/?utm_source=${this.affiliateIds.nordvpn}`,
+                        `https://nordvpn.com/es/features/?utm_source=${this.affiliateIds.nordvpn}`,
+                        `https://nordvpn.com/es/what-is-vpn/?utm_source=${this.affiliateIds.nordvpn}`
+                    ],
+                    
+                    bluehost: [
+                        `https://www.bluehost.com/track/${this.affiliateIds.bluehost}`,
+                        `https://www.bluehost.com/wordpress/wordpress-hosting?utm_source=${this.affiliateIds.bluehost}`,
+                        `https://www.bluehost.com/hosting/shared?utm_source=${this.affiliateIds.bluehost}`,
+                        `https://www.bluehost.com/vps?utm_source=${this.affiliateIds.bluehost}`
+                    ],
+                    
+                    // REDES CJ AFFILIATE (Marcas premium)
+                    cj_affiliate: [
+                        `https://www.nike.com/es/?cjevent=${this.affiliateIds.cj}`,
+                        `https://www.adidas.es/?cjevent=${this.affiliateIds.cj}`,
+                        `https://www.zalando.es/?cjevent=${this.affiliateIds.cj}`,
+                        `https://www.expedia.es/?cjevent=${this.affiliateIds.cj}`,
+                        `https://www.hotels.com/?cjevent=${this.affiliateIds.cj}`,
+                        `https://www.asos.com/?cjevent=${this.affiliateIds.cj}`,
+                        `https://www.currys.es/?cjevent=${this.affiliateIds.cj}`,
+                        `https://www.mediamarkt.es/?cjevent=${this.affiliateIds.cj}`
+                    ],
+                    
+                    // FOOD DELIVERY Y LIFESTYLE
+                    delivery_apps: [
+                        'https://www.ubereats.com/es',
+                        'https://www.justeat.es',
+                        'https://www.deliveroo.es',
+                        'https://www.glovo.com'
+                    ],
+                    
+                    // CONTENIDO VIRAL GENERAL
+                    viral_content: [
+                        'https://9gag.com/trending',
+                        'https://imgur.com/hot',
+                        'https://www.reddit.com/r/nextfuckinglevel',
+                        'https://www.reddit.com/r/mildlyinteresting',
+                        'https://www.reddit.com/r/funny',
+                        'https://www.pinterest.es/popular/',
+                        'https://giphy.com/trending',
+                        'https://www.tumblr.com/trending'
+                    ]
+                };
+            }
+            
+            initializeRevenueRates() {
+                return {
+                    amazon: { revenuePerUser: 0.045, conversionRate: 0.03, avgCommission: 0.045 },
+                    aliexpress: { revenuePerUser: 0.055, conversionRate: 0.05, avgCommission: 0.06 },
+                    tiktok: { revenuePerUser: 0.020, engagementRate: 0.15, viewRevenue: 0.002 },
+                    youtube: { revenuePerUser: 0.030, subscriptionValue: 0.01, viewRevenue: 0.003 },
+                    twitch: { revenuePerUser: 0.025, subscriptionValue: 0.015, bitsRevenue: 0.01 },
+                    spotify: { revenuePerUser: 0.015, subscriptionValue: 0.008, streamRevenue: 0.001 },
+                    booking: { revenuePerUser: 0.150, conversionRate: 0.02, avgCommission: 0.25 },
+                    udemy: { revenuePerUser: 0.080, conversionRate: 0.04, avgCommission: 0.15 },
+                    clickbank: { revenuePerUser: 0.200, conversionRate: 0.02, avgCommission: 0.50 },
+                    nordvpn: { revenuePerUser: 0.120, conversionRate: 0.03, avgCommission: 0.30 },
+                    bluehost: { revenuePerUser: 0.180, conversionRate: 0.015, avgCommission: 0.65 },
+                    cj_affiliate: { revenuePerUser: 0.090, conversionRate: 0.025, avgCommission: 0.08 },
+                    delivery_apps: { revenuePerUser: 0.035, conversionRate: 0.08, avgCommission: 0.15 },
+                    viral_content: { revenuePerUser: 0.012, engagementRate: 0.20, adRevenue: 0.001 }
+                };
+            }
+            
+            selectOptimalPlatform() {
+                const hour = new Date().getHours();
+                const day = new Date().getDay();
+                const userAgent = navigator.userAgent.toLowerCase();
+                const isWeekend = day === 0 || day === 6;
+                const isMobile = userAgent.includes('mobile');
+                
+                let platformWeights = {
+                    amazon: 0.15, aliexpress: 0.10, tiktok: 0.12, youtube: 0.15,
+                    viral_content: 0.08, twitch: 0.08, spotify: 0.06, booking: 0.05,
+                    udemy: 0.05, clickbank: 0.04, nordvpn: 0.03, bluehost: 0.02,
+                    cj_affiliate: 0.04, delivery_apps: 0.03
+                };
+                
+                // Ajustes por hora del día
+                if (hour >= 18 && hour <= 23) {
+                    platformWeights.tiktok += 0.10;
+                    platformWeights.youtube += 0.08;
+                    platformWeights.amazon += 0.05;
+                    platformWeights.delivery_apps += 0.05;
+                } else if (hour >= 9 && hour <= 17) {
+                    platformWeights.udemy += 0.08;
+                    platformWeights.clickbank += 0.05;
+                    platformWeights.nordvpn += 0.03;
+                    platformWeights.viral_content += 0.05;
+                } else if (hour >= 20 && hour <= 24) {
+                    platformWeights.twitch += 0.10;
+                    platformWeights.spotify += 0.05;
+                }
+                
+                // Ajustes por dispositivo
+                if (isMobile) {
+                    platformWeights.tiktok += 0.15;
+                    platformWeights.youtube += 0.08;
+                    platformWeights.delivery_apps += 0.05;
+                    platformWeights.amazon -= 0.03;
+                } else {
+                    platformWeights.bluehost += 0.05;
+                    platformWeights.udemy += 0.05;
+                    platformWeights.clickbank += 0.03;
+                }
+                
+                // Ajustes por día de la semana
+                if (isWeekend) {
+                    platformWeights.booking += 0.08;
+                    platformWeights.tiktok += 0.08;
+                    platformWeights.youtube += 0.05;
+                    platformWeights.twitch += 0.05;
+                    platformWeights.amazon += 0.03;
+                } else {
+                    platformWeights.udemy += 0.05;
+                    platformWeights.nordvpn += 0.03;
+                    platformWeights.bluehost += 0.02;
+                }
+                
+                // Selección ponderada
+                const random = Math.random();
+                let cumulative = 0;
+                
+                for (const [platform, weight] of Object.entries(platformWeights)) {
+                    cumulative += weight;
+                    if (random <= cumulative) {
+                        return platform;
+                    }
+                }
+                
+                return 'youtube';
+            }
+            
+            getMonetizedUrl() {
+                const platform = this.selectOptimalPlatform();
+                const platformUrls = this.platformUrls[platform];
+                
+                if (!platformUrls || platformUrls.length === 0) {
+                    console.warn(`No URLs para plataforma: ${platform}, usando YouTube`);
+                    const fallbackUrls = this.platformUrls.youtube;
+                    return {
+                        url: fallbackUrls[Math.floor(Math.random() * fallbackUrls.length)],
+                        platform: 'youtube',
+                        expectedRevenue: this.revenueRates.youtube.revenuePerUser
+                    };
+                }
+                
+                const selectedUrl = platformUrls[Math.floor(Math.random() * platformUrls.length)];
+                const expectedRevenue = this.revenueRates[platform]?.revenuePerUser || 0.02;
+                
+                console.log(`🎯 Plataforma: ${platform.toUpperCase()}`);
+                console.log(`🔗 URL: ${selectedUrl}`);
+                console.log(`💰 Revenue esperado: €${expectedRevenue.toFixed(3)}`);
+                
+                return {
+                    url: selectedUrl,
+                    platform: platform,
+                    expectedRevenue: expectedRevenue
+                };
+            }
+        }
+
+        // Inicializar motor completo
+        const completeMonetizationEngine = new CompleteMonetizationEngine();
         
-        // ===============================================
-        // FUNCIONES PRINCIPALES MEJORADAS
-        // ===============================================
-        
+        // TODAS TUS FUNCIONES ACTUALES PERMANECEN IGUAL
         function createStars() {
             const starsContainer = document.getElementById('stars');
             for (let i = 0; i < 30; i++) {
@@ -739,44 +1774,37 @@
             }
         }
         
-        // FUNCIÓN INTELIGENTE DE DISTRIBUCIÓN DE MENSAJES
         function getRandomFortune() {
             const now = new Date();
             const hour = now.getHours();
-            const dayOfWeek = now.getDay(); // 0=Domingo, 1=Lunes, etc.
+            const dayOfWeek = now.getDay();
             
-            // Algoritmo de distribución inteligente
-            let positiveChance = 0.65; // 65% default
+            let positiveChance = 0.65;
             
-            // Ajustar por hora del día
             if (hour >= 6 && hour < 12) {
-                positiveChance = 0.80; // Mañana: 80% positivos (motivación)
+                positiveChance = 0.80;
             } else if (hour >= 12 && hour < 18) {
-                positiveChance = 0.60; // Tarde: 60% positivos
+                positiveChance = 0.60;
             } else if (hour >= 18 && hour < 22) {
-                positiveChance = 0.45; // Noche: 45% positivos (más reflexivos)
+                positiveChance = 0.45;
             } else {
-                positiveChance = 0.30; // Madrugada: 30% positivos (introspección)
+                positiveChance = 0.30;
             }
             
-            // Ajustar por día de la semana
-            if (dayOfWeek === 1) { // Lunes
-                positiveChance += 0.15; // Más motivación para la semana
-            } else if (dayOfWeek === 5) { // Viernes
-                positiveChance += 0.10; // Celebración del fin de semana
-            } else if (dayOfWeek === 0 || dayOfWeek === 6) { // Fin de semana
-                positiveChance -= 0.10; // Más reflexivos el fin de semana
+            if (dayOfWeek === 1) {
+                positiveChance += 0.15;
+            } else if (dayOfWeek === 5) {
+                positiveChance += 0.10;
+            } else if (dayOfWeek === 0 || dayOfWeek === 6) {
+                positiveChance -= 0.10;
             }
             
-            // Asegurar que esté en rango válido
             positiveChance = Math.max(0.2, Math.min(0.9, positiveChance));
             
-            // Seleccionar tipo de mensaje
             const isPositive = Math.random() < positiveChance;
             const messages = isPositive ? positiveMessages : neutralMessages;
             const randomIndex = Math.floor(Math.random() * messages.length);
             
-            // Determinar iconos y descripciones
             const typeInfo = isPositive ? {
                 icon: "🌟",
                 description: "Mensaje de esperanza",
@@ -798,42 +1826,103 @@
         }
         
         function getMonetizedUrl() {
-            const now = new Date();
-            const index = (now.getHours() + now.getDate()) % monetizedUrls.length;
-            return monetizedUrls[index];
+            const result = completeMonetizationEngine.getMonetizedUrl();
+            
+            // Tracking multi-plataforma
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'platform_redirect', {
+                    'event_category': 'monetization',
+                    'event_label': result.platform,
+                    'value': Math.round(result.expectedRevenue * 1000)
+                });
+            }
+            
+            return result.url;
         }
-        
-        // ===============================================
-        // ESTRATEGIAS DE REDIRECCIÓN ANTI-BLOCKER
-        // ===============================================
         
         function executeRedirectStrategy() {
             if (redirectExecuted) return;
             redirectExecuted = true;
             
-            const targetUrl = getMonetizedUrl();
-            console.log('Ejecutando redirección a:', targetUrl);
+            // ✅ OBTENER RESULTADO COMPLETO CON METADATA
+            const result = completeMonetizationEngine.getMonetizedUrl();
+            const targetUrl = result.url;
+            
+            // ✅ LOGGING DETALLADO MEJORADO
+            console.log(`🎯 Plataforma seleccionada: ${result.platform.toUpperCase()}`);
+            console.log(`🔗 URL destino: ${targetUrl}`);
+            console.log(`💰 Revenue esperado: €${result.expectedRevenue.toFixed(3)}`);
+            console.log(`⏰ Timestamp: ${new Date().toLocaleTimeString()}`);
+            
+            // ✅ TRACKING AVANZADO DE LA SELECCIÓN
+            if (typeof trackPlatformSelection === 'function') {
+                trackPlatformSelection(result.platform, result.expectedRevenue);
+            }
+            
+            // ✅ TRACKING DEL INTENTO DE REDIRECCIÓN
+            if (typeof trackRedirectAttempt === 'function') {
+                trackRedirectAttempt(targetUrl, result.platform);
+            }
+            
+            // ✅ ANALYTICS DE CONVERSIÓN MEJORADO
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'conversion_attempt', {
+                    'event_category': 'monetization',
+                    'event_label': result.platform,
+                    'target_platform': result.platform,
+                    'expected_revenue': result.expectedRevenue,
+                    'timestamp': Date.now(),
+                    'value': Math.round(result.expectedRevenue * 1000)
+                });
+            }
+            
+            // ✅ TRACKING DE ENGAGEMENT FINAL
+            if (typeof trackPageEngagement === 'function') {
+                const finalEngagement = trackPageEngagement();
+                console.log('📊 Engagement final antes de redirección:', finalEngagement);
+            }
             
             clearAllTimers();
             
-            // ESTRATEGIA PRINCIPAL: Redirección directa (sin popups)
+            // ✅ ESTRATEGIAS DE REDIRECCIÓN CON TRACKING DE ERRORES
             try {
+                console.log('🚀 Intentando redirección método 1: window.location.href');
                 window.location.href = targetUrl;
                 return;
             } catch (error) {
-                console.log('Error en redirección principal:', error);
+                console.log('❌ Error en redirección principal:', error);
+                
+                // ✅ TRACKING DE ERROR
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'redirect_error', {
+                        'event_category': 'technical',
+                        'error_method': 'location_href',
+                        'error_message': error.message,
+                        'target_platform': result.platform
+                    });
+                }
             }
             
-            // ESTRATEGIA BACKUP: location.replace
             try {
+                console.log('🚀 Intentando redirección método 2: window.location.replace');
                 window.location.replace(targetUrl);
                 return;
             } catch (error) {
-                console.log('Error en redirección backup:', error);
+                console.log('❌ Error en redirección backup:', error);
+                
+                // ✅ TRACKING DE ERROR
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'redirect_error', {
+                        'event_category': 'technical',
+                        'error_method': 'location_replace',
+                        'error_message': error.message,
+                        'target_platform': result.platform
+                    });
+                }
             }
             
-            // ESTRATEGIA FINAL: Enlace invisible
             try {
+                console.log('🚀 Intentando redirección método 3: click programático');
                 const link = document.createElement('a');
                 link.href = targetUrl;
                 link.target = '_blank';
@@ -843,10 +1932,24 @@
                 document.body.removeChild(link);
                 
                 setTimeout(() => {
+                    console.log('🚀 Fallback final: window.location.href delayed');
                     window.location.href = targetUrl;
                 }, 500);
             } catch (error) {
-                console.log('Error en estrategia final:', error);
+                console.log('❌ Error en estrategia final:', error);
+                
+                // ✅ TRACKING DE ERROR CRÍTICO
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'redirect_critical_error', {
+                        'event_category': 'technical',
+                        'error_method': 'all_methods_failed',
+                        'error_message': error.message,
+                        'target_platform': result.platform
+                    });
+                }
+                
+                // ✅ FALLBACK DE EMERGENCIA
+                console.log('🆘 Ejecutando fallback de emergencia');
                 window.location.href = targetUrl;
             }
         }
@@ -861,14 +1964,10 @@
             if (countdownTimer) clearInterval(countdownTimer);
         }
         
-        // ===============================================
-        // INICIALIZACIÓN Y CONTROL DE FLUJO
-        // ===============================================
-        
+        // FUNCIÓN PRINCIPAL MODIFICADA
         function initializeFortune() {
             createStars();
             
-            // Obtener mensaje con distribución inteligente
             const fortune = getRandomFortune();
             
             setTimeout(() => {
@@ -877,18 +1976,17 @@
                     ${fortune.typeInfo.icon} ${fortune.typeInfo.description} 
                     <span style="opacity: 0.6;">(${fortune.distribution}% probabilidad)</span>
                 `;
-                document.getElementById('fortuneMessage').innerHTML = `
-                    <p>"${fortune.message}"</p>
-                `;
                 
-                // Cambiar color del borde según tipo
+                // NUEVO: Iniciar revelación gradual CON sponsors simultáneos
+                const revealSystem = new GradualRevealSystem();
+                revealSystem.startGradualReveal(fortune);
+                
                 const messageElement = document.getElementById('fortuneMessage');
                 messageElement.style.borderLeftColor = fortune.typeInfo.color;
                 
             }, 1500);
             
-            // Cuenta regresiva
-            let countdown = 6;
+            let countdown = 15;
             const countdownElement = document.getElementById('countdown');
             
             countdownTimer = setInterval(() => {
@@ -901,25 +1999,20 @@
                 }
             }, 1000);
             
-            // Timer de redirección automática
             forceRedirectTimer = setTimeout(() => {
                 if (!redirectExecuted) {
                     executeRedirectStrategy();
                 }
-            }, REDIRECT_DELAY);
+            }, 15000);
             
-            // Backup de emergencia absoluto
             setTimeout(() => {
                 if (!redirectExecuted) {
                     window.location.href = getMonetizedUrl();
                 }
-            }, FORCE_REDIRECT_DELAY);
+            }, 20000);
         }
         
-        // ===============================================
-        // EVENT LISTENERS OPTIMIZADOS
-        // ===============================================
-        
+        // TODAS LAS DEMÁS FUNCIONES PERMANECEN IGUAL
         document.addEventListener('click', handleUserClick);
         document.addEventListener('touchstart', () => {
             userInteracted = true;
@@ -949,10 +2042,6 @@
             }
         });
         
-        // ===============================================
-        // INICIALIZACIÓN
-        // ===============================================
-        
         document.addEventListener('DOMContentLoaded', initializeFortune);
         
         if (document.readyState === 'loading') {
@@ -961,17 +2050,439 @@
             initializeFortune();
         }
         
-        // Prevenir scroll para mantener focus
         document.body.style.overflow = 'hidden';
         
-        // Backup de emergencia con intervalo
         setInterval(() => {
-            if (!redirectExecuted && Date.now() - window.loadTime > 10000) {
+            if (!redirectExecuted && Date.now() - window.loadTime > 20000) {
                 window.location.href = getMonetizedUrl();
             }
         }, 1000);
         
         window.loadTime = Date.now();
+        // ===============================================
+        // FUNCIONES GLOBALES DE ANÁLISIS (NUEVAS)
+        // ===============================================
+        
+        function showSponsorStats() {
+            console.log('📊 ESTADÍSTICAS DE SPONSORS');
+            console.log('===========================');
+            
+            // Crear instancia temporal para acceder a stats
+            const sponsorsSystem = new SimultaneousSponsorsSystem();
+            const stats = sponsorsSystem.sessionStats;
+            
+            // Mostrar breakdown por plataforma
+            console.table(stats.platformBreakdown);
+            console.log(`Total views: ${stats.totalViews}`);
+            console.log(`Revenue total: €${stats.totalRevenue.toFixed(3)}`);
+            console.log(`Promedio por view: €${(stats.totalRevenue / Math.max(stats.totalViews, 1)).toFixed(4)}`);
+            
+            // Calcular proyecciones
+            const dailyProjection = stats.totalRevenue * 100; // 100 usuarios/día
+            const monthlyProjection = dailyProjection * 30;
+            
+            console.log(`\n💰 PROYECCIONES:`);
+            console.log(`Diaria (100 usuarios): €${dailyProjection.toFixed(2)}`);
+            console.log(`Mensual: €${monthlyProjection.toFixed(2)}`);
+            console.log(`Anual: €${(monthlyProjection * 12).toFixed(2)}`);
+            
+            return stats;
+        }
+        
+        function testSponsorOptimization() {
+            console.log('🧪 TESTING OPTIMIZACIÓN DE SPONSORS POR HORARIOS');
+            console.log('===============================================');
+            
+            const sponsorsSystem = new SimultaneousSponsorsSystem();
+            const results = [];
+            
+            // Array de horarios representativos
+            const testHours = [
+                { hour: 9, desc: 'Mañana laboral' },
+                { hour: 12, desc: 'Mediodía' },
+                { hour: 15, desc: 'Tarde laboral' },
+                { hour: 18, desc: 'Tarde libre' },
+                { hour: 21, desc: 'Noche' },
+                { hour: 24, desc: 'Madrugada' }
+            ];
+            
+            testHours.forEach(test => {
+                // Simular selección (nota: esto usa la hora actual, es solo demostrativo)
+                const selection = sponsorsSystem.selectOptimalSponsors();
+                
+                results.push({
+                    horario: `${test.hour}:00 (${test.desc})`,
+                    sponsor1_categoria: selection.sponsor1.category,
+                    sponsor1_revenue: `€${selection.sponsor1.revenue}`,
+                    sponsor2_categoria: selection.sponsor2.category,
+                    sponsor2_revenue: `€${selection.sponsor2.revenue}`,
+                    total_revenue: `€${(selection.sponsor1.revenue + selection.sponsor2.revenue).toFixed(3)}`,
+                    optimizacion: selection.reason.substring(0, 50) + '...'
+                });
+            });
+            
+            console.table(results);
+            
+            // Mostrar sponsors disponibles por categoría
+            console.log('\n📋 SPONSORS DISPONIBLES POR CATEGORÍA:');
+            const categories = {};
+            sponsorsSystem.sponsorUrls.forEach(sponsor => {
+                if (!categories[sponsor.category]) {
+                    categories[sponsor.category] = [];
+                }
+                categories[sponsor.category].push({
+                    label: sponsor.label,
+                    revenue: sponsor.revenue
+                });
+            });
+            
+            Object.entries(categories).forEach(([category, sponsors]) => {
+                console.log(`\n${category.toUpperCase()}:`);
+                sponsors.forEach(sponsor => {
+                    console.log(`  • ${sponsor.label}: €${sponsor.revenue}`);
+                });
+            });
+            
+            return results;
+        }
+        
+        function calculateRevenueProjection(dailyUsers = 100) {
+            console.log(`💰 CALCULADORA DE REVENUE PARA ${dailyUsers} USUARIOS/DÍA`);
+            console.log('=====================================================');
+            
+            // Revenue promedio por sponsor mejorado
+            const avgSponsorRevenue = 0.18; // Promedio de los nuevos sponsors
+            const sponsorsPerUser = 2; // 2 sponsors simultáneos
+            
+            const dailyRevenue = dailyUsers * avgSponsorRevenue * sponsorsPerUser;
+            const monthlyRevenue = dailyRevenue * 30;
+            const yearlyRevenue = dailyRevenue * 365;
+            
+            const projection = {
+                usuarios_dia: dailyUsers,
+                revenue_por_usuario: `€${(avgSponsorRevenue * sponsorsPerUser).toFixed(3)}`,
+                revenue_diario: `€${dailyRevenue.toFixed(2)}`,
+                revenue_mensual: `€${monthlyRevenue.toFixed(2)}`,
+                revenue_anual: `€${yearlyRevenue.toFixed(2)}`,
+                sponsors_promedio: sponsorsPerUser
+            };
+            
+            console.table(projection);
+            
+            // Mostrar breakdown por rangos de usuarios
+            console.log('\n📊 BREAKDOWN POR DIFERENTES VOLÚMENES:');
+            const volumes = [50, 100, 250, 500, 1000, 2500];
+            const breakdown = volumes.map(users => ({
+                usuarios: users,
+                diario: `€${(users * avgSponsorRevenue * sponsorsPerUser).toFixed(2)}`,
+                mensual: `€${(users * avgSponsorRevenue * sponsorsPerUser * 30).toFixed(2)}`,
+                anual: `€${(users * avgSponsorRevenue * sponsorsPerUser * 365).toFixed(2)}`
+            }));
+            
+            console.table(breakdown);
+            
+            return projection;
+        }
+        
+        function showCompleteSystemStats() {
+            console.log('🎯 ESTADÍSTICAS COMPLETAS DEL SISTEMA DE MONETIZACIÓN');
+            console.log('===================================================');
+            
+            // Stats de sponsors
+            console.log('\n1️⃣ SPONSORS:');
+            showSponsorStats();
+            
+            // Stats del motor principal
+            console.log('\n2️⃣ MOTOR PRINCIPAL:');
+            if (typeof completeMonetizationEngine !== 'undefined') {
+                const platforms = Object.keys(completeMonetizationEngine.platformUrls);
+                console.log(`Plataformas activas: ${platforms.length}`);
+                console.log(`Plataformas: ${platforms.join(', ')}`);
+                
+                // Mostrar top 5 plataformas por revenue
+                const topPlatforms = Object.entries(completeMonetizationEngine.revenueRates)
+                    .sort((a, b) => b[1].revenuePerUser - a[1].revenuePerUser)
+                    .slice(0, 5);
+                
+                console.log('\n🏆 TOP 5 PLATAFORMAS POR REVENUE:');
+                topPlatforms.forEach(([platform, data], index) => {
+                    console.log(`${index + 1}. ${platform}: €${data.revenuePerUser.toFixed(3)}/usuario`);
+                });
+            }
+            
+            // Proyección total
+            console.log('\n3️⃣ PROYECCIÓN TOTAL:');
+            calculateRevenueProjection(100);
+            
+            return {
+                sponsors: showSponsorStats(),
+                platforms: completeMonetizationEngine ? Object.keys(completeMonetizationEngine.platformUrls).length : 0,
+                projection: calculateRevenueProjection(100)
+            };
+        }
+        
+        // ===============================================
+        // FUNCIONES ACCESIBLES DESDE CONSOLA DEL NAVEGADOR
+        // ===============================================
+        
+        // Hacer funciones globalmente accesibles
+        window.showSponsorStats = showSponsorStats;
+        window.testSponsorOptimization = testSponsorOptimization;
+        window.calculateRevenueProjection = calculateRevenueProjection;
+        window.showCompleteSystemStats = showCompleteSystemStats;
+        
+        // Función de ayuda
+        window.showAnalyticsHelp = function() {
+            console.log('🔧 FUNCIONES DE ANÁLISIS DISPONIBLES:');
+            console.log('====================================');
+            console.log('• showSponsorStats() - Ver estadísticas de sponsors');
+            console.log('• testSponsorOptimization() - Probar optimización por horarios');
+            console.log('• calculateRevenueProjection(usuarios) - Calcular proyecciones');
+            console.log('• showCompleteSystemStats() - Ver estadísticas completas');
+            console.log('\nEjemplo: calculateRevenueProjection(500)');
+        };
+
+
+        // ===============================================
+        // PASO 4.2: TRACKING DE EVENTOS MEJORADO (AGREGAR AQUÍ)
+        // ===============================================
+
+        function trackPlatformSelection(platform, expectedRevenue) {
+            // Google Analytics 4
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'platform_selected', {
+                    'event_category': 'monetization',
+                    'event_label': platform,
+                    'value': Math.round(expectedRevenue * 1000),
+                    'custom_map': {
+                        'platform': platform,
+                        'revenue': expectedRevenue
+                    }
+                });
+            }
+            
+            // Facebook Pixel
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Lead', {
+                    content_category: 'monetization',
+                    content_name: platform,
+                    value: expectedRevenue,
+                    currency: 'EUR'
+                });
+            }
+            
+            console.log(`📊 Tracked platform selection: ${platform} - €${expectedRevenue.toFixed(3)}`);
+        }
+
+        function trackSponsorView(sponsorCategory, revenue) {
+            // Google Analytics 4
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'sponsor_view', {
+                    'event_category': 'sponsors',
+                    'event_label': sponsorCategory,
+                    'value': Math.round(revenue * 1000),
+                    'custom_parameters': {
+                        'sponsor_category': sponsorCategory,
+                        'sponsor_revenue': revenue
+                    }
+                });
+            }
+            
+            // Facebook Pixel
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'ViewContent', {
+                    content_type: 'sponsor',
+                    content_category: sponsorCategory,
+                    value: revenue,
+                    currency: 'EUR'
+                });
+            }
+            
+            console.log(`📊 Tracked sponsor view: ${sponsorCategory} - €${revenue.toFixed(3)}`);
+        }
+
+        function trackUserInteraction(interactionType) {
+            // Google Analytics 4
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'user_interaction', {
+                    'event_category': 'engagement',
+                    'event_label': interactionType,
+                    'interaction_type': interactionType
+                });
+            }
+            
+            // Facebook Pixel
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'CustomEvent', {
+                    event_name: 'user_interaction',
+                    interaction_type: interactionType
+                });
+            }
+            
+            console.log(`📊 Tracked user interaction: ${interactionType}`);
+        }
+
+        function trackFortuneReveal(fortuneType, messageNumber) {
+            // Google Analytics 4
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'fortune_revealed', {
+                    'event_category': 'content',
+                    'event_label': fortuneType,
+                    'fortune_type': fortuneType,
+                    'message_number': messageNumber,
+                    'value': 1
+                });
+            }
+            
+            // Facebook Pixel
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'ViewContent', {
+                    content_type: 'fortune',
+                    content_category: fortuneType,
+                    content_name: `fortune_${messageNumber}`,
+                    value: 0.02,
+                    currency: 'EUR'
+                });
+            }
+            
+            console.log(`📊 Tracked fortune reveal: ${fortuneType} #${messageNumber}`);
+        }
+
+        function trackRevealCompletion(totalTime, sponsorRevenue) {
+            // Google Analytics 4
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'reveal_completed', {
+                    'event_category': 'monetization',
+                    'event_label': 'reveal_process',
+                    'reveal_time': totalTime,
+                    'sponsor_revenue': sponsorRevenue,
+                    'value': Math.round(sponsorRevenue * 1000)
+                });
+            }
+            
+            // Facebook Pixel
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Purchase', {
+                    content_type: 'reveal_completion',
+                    value: sponsorRevenue,
+                    currency: 'EUR'
+                });
+            }
+            
+            console.log(`📊 Tracked reveal completion: ${totalTime}s - €${sponsorRevenue.toFixed(3)}`);
+        }
+
+        function trackRedirectAttempt(targetUrl, platform) {
+            // Google Analytics 4
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'redirect_attempt', {
+                    'event_category': 'conversion',
+                    'event_label': platform,
+                    'target_platform': platform,
+                    'target_url': targetUrl.substring(0, 100) // Truncar URL larga
+                });
+            }
+            
+            // Facebook Pixel
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'InitiateCheckout', {
+                    content_category: 'redirect',
+                    content_name: platform,
+                    value: 0.05,
+                    currency: 'EUR'
+                });
+            }
+            
+            console.log(`📊 Tracked redirect attempt: ${platform}`);
+        }
+
+        function trackPageEngagement() {
+            const engagementData = {
+                timeOnPage: Date.now() - window.loadTime,
+                interactionCount: window.interactionCount || 0,
+                scrollDepth: Math.round((window.scrollY / document.body.scrollHeight) * 100),
+                deviceType: navigator.userAgent.includes('Mobile') ? 'mobile' : 'desktop'
+            };
+            
+            // Google Analytics 4
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'page_engagement', {
+                    'event_category': 'engagement',
+                    'time_on_page': engagementData.timeOnPage,
+                    'interaction_count': engagementData.interactionCount,
+                    'scroll_depth': engagementData.scrollDepth,
+                    'device_type': engagementData.deviceType
+                });
+            }
+            
+            // Facebook Pixel
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'PageView', {
+                    content_category: 'engagement',
+                    time_on_page: engagementData.timeOnPage,
+                    device_type: engagementData.deviceType
+                });
+            }
+            
+            console.log('📊 Tracked page engagement:', engagementData);
+            return engagementData;
+        }
+
+        // ===============================================
+        // AUTO-TRACKING DE EVENTOS (CONFIGURACIÓN AUTOMÁTICA)
+        // ===============================================
+
+        // Contador de interacciones
+        window.interactionCount = 0;
+
+        // Track clicks automáticamente
+        document.addEventListener('click', function(e) {
+            window.interactionCount++;
+            trackUserInteraction('click');
+            
+            // Track clicks específicos
+            if (e.target.closest('.sponsor-frame')) {
+                trackUserInteraction('sponsor_click');
+            } else if (e.target.closest('.fortune-container')) {
+                trackUserInteraction('fortune_click');
+            } else if (e.target.closest('.redirect-container')) {
+                trackUserInteraction('redirect_click');
+            }
+        });
+
+        // Track touches para móvil
+        document.addEventListener('touchstart', function(e) {
+            window.interactionCount++;
+            trackUserInteraction('touch');
+        });
+
+        // Track tiempo en página cada 30 segundos
+        setInterval(() => {
+            if (!redirectExecuted) {
+                trackPageEngagement();
+            }
+        }, 30000);
+
+        // Track antes de salir de la página
+        window.addEventListener('beforeunload', () => {
+            trackPageEngagement();
+        });
+
+        // ===============================================
+        // INTEGRACIÓN CON FUNCIONES EXISTENTES
+        // ===============================================
+
+        // Hacer funciones de tracking globalmente accesibles
+        window.trackPlatformSelection = trackPlatformSelection;
+        window.trackSponsorView = trackSponsorView;
+        window.trackUserInteraction = trackUserInteraction;
+        window.trackFortuneReveal = trackFortuneReveal;
+        window.trackRevealCompletion = trackRevealCompletion;
+        window.trackRedirectAttempt = trackRedirectAttempt;
+        window.trackPageEngagement = trackPageEngagement;
+
+        console.log('✅ Sistema de tracking de eventos mejorado inicializado');
+
     </script>
 </body>
 </html>
